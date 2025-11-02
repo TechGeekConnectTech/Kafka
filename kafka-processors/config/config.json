@@ -29,6 +29,13 @@
             "max_workers": 3,
             "consumer_timeout": 1000
         },
+        "server_cooling_processor": {
+            "enabled": true,
+            "max_workers": 2,
+            "consumer_timeout": 1000,
+            "cooling_period_hours": 48,
+            "check_interval_hours": 2
+        },
         "server_demise_processor": {
             "enabled": true,
             "max_workers": 3,

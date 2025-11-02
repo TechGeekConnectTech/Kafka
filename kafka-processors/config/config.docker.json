@@ -1,8 +1,8 @@
 {
     "kafka": {
-        "bootstrap_servers": ["localhost:9092"],
-        "client_id": "kafka-processors",
-        "group_id": "details-processor-group",
+        "bootstrap_servers": ["kafka:9092"],
+        "client_id": "kafka-processors-docker",
+        "group_id": "demise-processor-group",
         "auto_offset_reset": "earliest",
         "enable_auto_commit": true,
         "auto_commit_interval_ms": 1000,
@@ -12,21 +12,34 @@
         "consumer_timeout_ms": 5000
     },
     "topics": {
-        "input": "details-input",
-        "output": "details-output"
+        "server_demise_pipeline": {
+            "name": "server-demise-pipeline",
+            "partitions": 3,
+            "replication_factor": 1
+        }
     },
     "processors": {
-        "show_details": {
+        "server_check_processor": {
             "enabled": true,
-            "threads": 2
+            "max_workers": 3,
+            "consumer_timeout": 1000
         },
-        "update_details": {
+        "server_poweroff_processor": {
             "enabled": true,
-            "threads": 2
+            "max_workers": 3,
+            "consumer_timeout": 1000
         },
-        "create_details": {
+        "server_cooling_processor": {
             "enabled": true,
-            "threads": 2
+            "max_workers": 2,
+            "consumer_timeout": 1000,
+            "cooling_period_hours": 48,
+            "check_interval_hours": 2
+        },
+        "server_demise_processor": {
+            "enabled": true,
+            "max_workers": 3,
+            "consumer_timeout": 1000
         }
     },
     "api": {

@@ -1,9 +1,9 @@
 # Kafka Processors System - Complete Component Documentation
 
 **Developer: Mahesh Gavandar**  
-**Version: 3.0.0**  
+**Version: 3.1.0**  
 **Date: November 2, 2025**  
-**Architecture: Docker Containerized Microservices**
+**Architecture: Docker Containerized Microservices with Server Demise Pipeline**
 
 ## 📋 Table of Contents
 1. [System Overview](#system-overview)
@@ -33,7 +33,8 @@
 
 | Feature Category | Components | Status |
 |------------------|------------|---------|
-| **Message Processing** | Kafka + 3 Processors | ✅ Production Ready |
+| **Message Processing** | Kafka + 4 Processors | ✅ Production Ready |
+| **Server Demise Pipeline** | 4-Stage Pipeline + Cooling | ✅ Production Ready |
 | **REST API** | FastAPI + Auto-docs | ✅ Production Ready |
 | **Containerization** | Docker Compose Stack | ✅ Production Ready |
 | **Health Monitoring** | Multi-endpoint Health | ✅ Production Ready |
@@ -187,8 +188,9 @@ GET  /docs                # Swagger UI
 
 #### Managed Processors:
 1. **ServerCheckProcessor**: Validates server information
-2. **ServerPowerOffProcessor**: Handles power-off operations  
-3. **ServerDemiseProcessor**: Executes decommissioning
+2. **ServerPowerOffProcessor**: Handles power-off operations
+3. **ServerCoolingPeriodProcessor**: 48-hour cooling period with monitoring *(NEW v3.1.0)*
+4. **ServerDemiseProcessor**: Executes decommissioning
 
 #### Features:
 - Multi-threaded worker management
@@ -540,7 +542,8 @@ docs-server ←→ filesystem              # Static content serving
 
 4. Business Logic Processing
    ├── ServerCheckProcessor (Validation)
-   ├── ServerPowerOffProcessor (Power Management) 
+   ├── ServerPowerOffProcessor (Power Management)
+   ├── ServerCoolingPeriodProcessor (48h Cooling + Monitoring)
    ├── ServerDemiseProcessor (Decommissioning)
    └── Result Aggregation
 

@@ -16,6 +16,7 @@ from concurrent.futures import ThreadPoolExecutor
 from utils.config_manager import ConfigManager
 from processors.server_check_processor import ServerCheckProcessor
 from processors.server_poweroff_processor import ServerPowerOffProcessor
+from processors.server_cooling_processor import ServerCoolingPeriodProcessor
 from processors.server_demise_processor import ServerDemiseProcessor
 
 # Configure logging
@@ -84,18 +85,20 @@ class ServerDemisePipelineManager:
             
             # Initialize processors in order of pipeline
             self.processors = [
-                ServerCheckProcessor(self.config),      # Step 1: Check server
-                ServerPowerOffProcessor(self.config),   # Step 2: Power off
-                ServerDemiseProcessor(self.config)      # Step 3: Demise request
+                ServerCheckProcessor(self.config),         # Step 1: Check server
+                ServerPowerOffProcessor(self.config),      # Step 2: Power off
+                ServerCoolingPeriodProcessor(self.config), # Step 2.5: 48-hour cooling period
+                ServerDemiseProcessor(self.config)         # Step 3: Demise request
             ]
             
             logger.info(f"✅ Initialized {len(self.processors)} processors")
             
             # Display pipeline flow
             logger.info("📋 Server Demise Pipeline Flow:")
-            logger.info("   API → check_server → poweroff_server → demise_server → complete")
+            logger.info("   API → check_server → poweroff_server → cooling_period → demise_server → complete")
             logger.info("   1️⃣  ServerCheckProcessor: Verify server in portal")
             logger.info("   2️⃣  ServerPowerOffProcessor: Power off server")
+            logger.info("   2️⃣.5️⃣ ServerCoolingPeriodProcessor: 48-hour cooling period with monitoring")
             logger.info("   3️⃣  ServerDemiseProcessor: Execute decommission")
             
             return True

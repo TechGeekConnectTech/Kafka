@@ -591,10 +591,12 @@
 
 <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 15px; border-radius: 8px;">
 <h4>📊 Processing Pipeline</h4>
+<p style="margin: 10px 0; font-size: 1.1em;"><strong>Pipeline Flow:</strong> API → check_server → poweroff_server → cooling_period → demise_server → complete</p>
 <ul style="margin: 10px 0 0 20px;">
-<li><strong>ServerCheckProcessor</strong>: Validates server information</li>
-<li><strong>ServerPowerOffProcessor</strong>: Handles power-off operations</li>
-<li><strong>ServerDemiseProcessor</strong>: Executes decommissioning</li>
+<li><strong>1️⃣ ServerCheckProcessor</strong>: Validates server information in portal</li>
+<li><strong>2️⃣ ServerPowerOffProcessor</strong>: Handles server power-off operations</li>
+<li><strong>2️⃣.5️⃣ ServerCoolingPeriodProcessor</strong>: 48-hour cooling period with monitoring</li>
+<li><strong>3️⃣ ServerDemiseProcessor</strong>: Executes final server decommissioning</li>
 <li><strong>Topic Manager</strong>: Handles Kafka topic operations</li>
 <li><strong>Message Router</strong>: Routes messages to appropriate processors</li>
 </ul>
@@ -1312,15 +1314,21 @@ API_BASE_URL = "http://localhost:8082"
 
 <h2 id="processor-details">Processor Details</h2>
 
-<h3 id="message-processing-workflow">Message Processing Workflow</h3>
+<h3 id="server-demise-pipeline">Server Demise Pipeline Workflow</h3>
+
+<p>The Server Demise Pipeline processes server decommissioning requests through a sequential 4-stage pipeline:</p>
+
+<div style="background: #f8f9fa; border-left: 4px solid #007bff; padding: 15px; margin: 20px 0;">
+<strong>Pipeline Flow:</strong> API → check_server → poweroff_server → cooling_period → demise_server → complete
+</div>
 
 <ol>
-<li><strong>Message Reception</strong>: Kafka consumer receives message from input topic</li>
-<li><strong>Validation</strong>: Base processor validates message structure and required fields</li>
-<li><strong>Routing</strong>: Message routed to appropriate processor based on action field</li>
-<li><strong>Business Logic</strong>: Processor-specific logic executes</li>
-<li><strong>Response Creation</strong>: Standardized response message created</li>
-<li><strong>Output Publishing</strong>: Result sent to output topic with original message ID</li>
+<li><strong>Message Reception</strong>: API receives server demise request and publishes to Kafka</li>
+<li><strong>Server Check</strong>: Validates server exists in portal and is eligible for demise</li>
+<li><strong>Power Off</strong>: Safely powers down the server via IPMI/BMC</li>
+<li><strong>Cooling Period</strong>: Enforces 48-hour cooling period with power monitoring</li>
+<li><strong>Demise Execution</strong>: Performs final server decommissioning</li>
+<li><strong>Pipeline Completion</strong>: Sends final status and cleans up resources</li>
 </ol>
 
 <h3 id="standardized-message-format">Standardized Message Format</h3>
@@ -1329,12 +1337,21 @@ API_BASE_URL = "http://localhost:8082"
 
 <pre><code>{
     "id": "unique-message-id",
-    "action": "show_details|update_details|create_details",
+    "action": "check_server|poweroff_server|start_cooling_period|demise_server",
+    "status": "pending",
     "data": {
-        "field1": "value1",
-        "field2": "value2"
+        "server_id": "SRV-12345",
+        "server_details": {
+            "hostname": "server.datacenter.com",
+            "ip_address": "192.168.1.100",
+            "location": "DC1-Rack-15-U20"
+        },
+        "original_request": {
+            "requested_by": "admin@company.com",
+            "reason": "End of lifecycle"
+        }
     },
-    "timestamp": "2024-11-02T12:00:00.000000",
+    "timestamp": "2025-11-02T12:00:00.000000",
     "source": "rest_api"
 }
 </code></pre>
@@ -1342,164 +1359,260 @@ API_BASE_URL = "http://localhost:8082"
 <h4 id="output-message-format">Output Message Format</h4>
 
 <pre><code>{
-    "id": "original-message-id",
-    "original_action": "show_details",
-    "processor": "ShowDetailsProcessor",
+    "id": "response-message-id",
+    "original_request_id": "original-message-id",
+    "action": "demise_complete",
+    "status": "success|error|pending",
+    "processor": "ServerDemiseProcessor", 
     "processor_id": "processor-instance-uuid",
-    "timestamp": "2024-11-02T12:00:00.000000",
-    "status": "success|error",
+    "timestamp": "2025-11-02T12:00:00.000000",
     "data": {
-        "processed_data": "results"
+        "server_id": "SRV-12345",
+        "demise_result": {
+            "portal_updated": true,
+            "assets_transferred": true,
+            "cleanup_completed": true
+        }
     },
-    "message": "Processing completed successfully"
+    "message": "Server demise completed successfully",
+    "pipeline_step": 3,
+    "pipeline_complete": true
 }
 </code></pre>
 
-<h3 id="show-details-processor">Show Details Processor</h3>
+<h3 id="server-check-processor">1️⃣ Server Check Processor</h3>
 
 <h4 id="purpose">Purpose</h4>
 
-<p>Retrieves and displays record information based on provided criteria.</p>
+<p>Validates server information in the portal and verifies eligibility for decommissioning process.</p>
 
 <h4 id="input-data-requirements">Input Data Requirements</h4>
 
 <ul>
-<li><code>name</code> (optional): Record name for lookup</li>
-<li><code>description</code> (optional): Additional context</li>
-<li><code>created_date</code> (optional): Filter by creation date</li>
+<li><code>server_id</code> (required): Unique server identifier</li>
+<li><code>server_details</code> (optional): Server metadata (hostname, IP, location)</li>
+<li><code>original_request</code> (optional): Request context and requester information</li>
 </ul>
 
 <h4 id="processing-logic">Processing Logic</h4>
 
 <ol>
-<li>Simulates database lookup operation</li>
-<li>Adds processing metadata and timestamps</li>
-<li>Returns structured record information</li>
-<li>Includes version and status information</li>
+<li>Validates server exists in portal system</li>
+<li>Checks server status and eligibility for demise</li>
+<li>Verifies no active services or dependencies</li>
+<li>Confirms authorization for decommissioning</li>
+<li>Forwards to power-off stage if validation passes</li>
 </ol>
 
 <h4 id="sample-output">Sample Output</h4>
 
 <pre><code>{
+    "action": "poweroff_server",
+    "status": "pending",
     "data": {
-        "id": "record-uuid",
-        "name": "Retrieved Record",
-        "description": "Details for record",
-        "created_date": "2024-01-01T00:00:00",
-        "last_modified": "2024-11-02T12:00:00",
-        "status": "active",
-        "metadata": {
-            "processed_by": "show_details_processor",
-            "processing_time": 1699012800.0,
-            "version": "1.0"
+        "server_id": "SRV-12345",
+        "server_details": {
+            "hostname": "srv-web-01.datacenter.com",
+            "ip_address": "192.168.1.100",
+            "location": "DC1-Rack-15-U20",
+            "serial_number": "ABC123456789"
+        },
+        "portal_check_result": {
+            "server_exists": true,
+            "status": "eligible_for_demise",
+            "last_activity": "2025-10-15T09:30:00Z"
         }
-    }
+    },
+    "message": "Server SRV-12345 verified and ready for power-off"
 }
 </code></pre>
 
-<h3 id="update-details-processor">Update Details Processor</h3>
+<h3 id="server-poweroff-processor">2️⃣ Server Power Off Processor</h3>
 
 <h4 id="purpose-2">Purpose</h4>
 
-<p>Modifies existing record information with provided updates.</p>
+<p>Safely powers down the server using IPMI/BMC remote management protocols.</p>
 
 <h4 id="input-data-requirements-2">Input Data Requirements</h4>
 
 <ul>
-<li><code>name</code> (optional): Updated record name</li>
-<li><code>description</code> (optional): Updated description</li>
-<li><code>status</code> (optional): New status value</li>
-<li>Additional fields as needed</li>
+<li><code>server_id</code> (required): Server to power off</li>
+<li><code>server_details</code> (required): IP address and management credentials</li>
+<li><code>portal_check_result</code> (optional): Previous validation results</li>
 </ul>
 
 <h4 id="processing-logic-2">Processing Logic</h4>
 
 <ol>
-<li>Validates update data presence</li>
-<li>Performs field-level validation</li>
-<li>Simulates database update operation</li>
-<li>Tracks version numbers and update history</li>
-<li>Returns updated record information</li>
+<li>Connects to server management interface (IPMI/BMC)</li>
+<li>Checks current power status</li>
+<li>Executes graceful shutdown if server is powered on</li>
+<li>Verifies power-off completion</li>
+<li>Forwards to cooling period stage</li>
 </ol>
 
-<h4 id="validation-rules">Validation Rules</h4>
+<h4 id="power-off-methods">Power Off Methods</h4>
 
 <ul>
-<li><code>name</code> must be at least 2 characters if provided</li>
-<li><code>email</code> must contain '@' symbol if provided</li>
-<li>Updates increment version number</li>
+<li><strong>IPMI</strong>: Industry standard protocol for server management</li>
+<li><strong>BMC</strong>: Baseboard Management Controller interface</li>
+<li><strong>Graceful Shutdown</strong>: OS-level shutdown before power off</li>
+<li><strong>Verification</strong>: Confirms power state after operation</li>
 </ul>
 
 <h4 id="sample-output-2">Sample Output</h4>
 
 <pre><code>{
+    "action": "start_cooling_period",
+    "status": "pending",
     "data": {
-        "id": "record-uuid",
-        "name": "Updated Record Name",
-        "updated_fields": ["name", "description"],
-        "last_modified": "2024-11-02T12:00:00",
-        "status": "updated",
-        "version": 2,
-        "metadata": {
-            "processed_by": "update_details_processor",
-            "processing_time": 1699012800.0,
-            "update_count": 1
-        }
-    }
+        "server_id": "SRV-12345",
+        "poweroff_result": {
+            "success": true,
+            "power_status": "off",
+            "poweroff_method": "IPMI",
+            "execution_time": "4.5s",
+            "verification": "confirmed_off"
+        },
+        "poweroff_timestamp": "2025-11-02T12:05:00.000000"
+    },
+    "message": "Server SRV-12345 powered off successfully. Starting 48-hour cooling period."
+}
 }
 </code></pre>
 
-<h3 id="create-details-processor">Create Details Processor</h3>
+<h3 id="server-cooling-processor">2️⃣.5️⃣ Server Cooling Period Processor</h3>
 
 <h4 id="purpose-3">Purpose</h4>
 
-<p>Creates new records with provided information.</p>
+<p>Enforces a mandatory 48-hour cooling period after server power-off with continuous power status monitoring.</p>
 
 <h4 id="input-data-requirements-3">Input Data Requirements</h4>
 
 <ul>
-<li><code>name</code> (required): Record name</li>
-<li><code>description</code> (optional): Record description</li>
-<li><code>category</code> (optional): Record category</li>
-<li><code>email</code> (optional): Contact email</li>
+<li><code>server_id</code> (required): Server undergoing cooling period</li>
+<li><code>server_details</code> (required): Server management information</li>
+<li><code>poweroff_timestamp</code> (required): When server was powered off</li>
+<li><code>poweroff_result</code> (optional): Power-off operation results</li>
 </ul>
 
 <h4 id="processing-logic-3">Processing Logic</h4>
 
 <ol>
-<li>Validates required fields presence</li>
-<li>Generates unique record identifier</li>
-<li>Performs business rule validation</li>
-<li>Simulates database creation operation</li>
-<li>Adds computed fields and metadata</li>
+<li>Starts 48-hour cooling period timer</li>
+<li>Creates background monitoring thread</li>
+<li>Performs power status checks every 2 hours</li>
+<li>Detects cooling period violations (server powers on)</li>
+<li>Forwards to demise stage after successful cooling</li>
 </ol>
 
-<h4 id="validation-rules-2">Validation Rules</h4>
+<h4 id="cooling-period-features">Cooling Period Features</h4>
 
 <ul>
-<li><code>name</code> is required and must be at least 2 characters</li>
-<li><code>email</code> must contain '@' symbol if provided</li>
-<li>Generated fields include slug and search keywords</li>
+<li><strong>48-Hour Duration</strong>: Mandatory cooling period for all servers</li>
+<li><strong>2-Hour Monitoring</strong>: Regular power status checks via IPMI</li>
+<li><strong>Violation Detection</strong>: Immediate error if server powers on during cooling</li>
+<li><strong>Background Processing</strong>: Non-blocking thread-based monitoring</li>
+<li><strong>Session Management</strong>: Thread-safe tracking of multiple cooling sessions</li>
 </ul>
 
 <h4 id="sample-output-3">Sample Output</h4>
 
+<div style="background: #d4edda; border: 1px solid #c3e6cb; padding: 15px; margin: 10px 0; border-radius: 5px;">
+<strong>Success Case (After 48 hours):</strong>
 <pre><code>{
+    "action": "demise_server",
+    "status": "pending",
     "data": {
-        "id": "new-record-uuid",
-        "original_request_id": "request-uuid",
-        "name": "New Record",
-        "description": "New record description",
-        "category": "general",
-        "created_date": "2024-11-02T12:00:00",
-        "status": "active",
-        "version": 1,
-        "computed_fields": {
-            "slug": "new-record",
-            "search_keywords": ["new", "record"],
-            "creation_source": "kafka_processor"
+        "server_id": "SRV-12345",
+        "cooling_completion": {
+            "cooling_start": "2025-11-02T12:05:00.000000",
+            "cooling_end": "2025-11-04T12:05:00.000000",
+            "total_checks_performed": 24,
+            "cooling_duration_hours": 48
         }
-    }
+    },
+    "message": "Server SRV-12345 completed 48-hour cooling period successfully. Proceeding to demise."
+}
+</code></pre>
+</div>
+
+<div style="background: #f8d7da; border: 1px solid #f5c6cb; padding: 15px; margin: 10px 0; border-radius: 5px;">
+<strong>Violation Case (Server powers on during cooling):</strong>
+<pre><code>{
+    "action": "cooling_violation_error",
+    "status": "violation_error",
+    "data": {
+        "server_id": "SRV-12345",
+        "violation_details": {
+            "violation_time": "2025-11-03T08:30:00.000000",
+            "cooling_elapsed_hours": 20.4,
+            "remaining_hours": 27.6,
+            "power_on_reason": "manual_power_on"
+        }
+    },
+    "error": "Server SRV-12345 powered on during mandatory cooling period",
+    "message": "CRITICAL: Server SRV-12345 violated cooling period by powering on. Demise process terminated.",
+    "pipeline_complete": true,
+    "violation": true
+}
+</code></pre>
+</div>
+
+<h3 id="server-demise-processor">3️⃣ Server Demise Processor</h3>
+
+<h4 id="purpose-4">Purpose</h4>
+
+<p>Executes the final server decommissioning process, including portal updates and asset management.</p>
+
+<h4 id="input-data-requirements-4">Input Data Requirements</h4>
+
+<ul>
+<li><code>server_id</code> (required): Server to decommission</li>
+<li><code>server_details</code> (required): Complete server information</li>
+<li><code>cooling_completion</code> (optional): Cooling period results</li>
+<li><code>original_request</code> (optional): Initial request context</li>
+</ul>
+
+<h4 id="processing-logic-4">Processing Logic</h4>
+
+<ol>
+<li>Updates server status in portal system</li>
+<li>Transfers or archives server assets and data</li>
+<li>Removes server from monitoring systems</li>
+<li>Updates inventory and asset management</li>
+<li>Completes decommissioning workflow</li>
+</ol>
+
+<h4 id="demise-operations">Demise Operations</h4>
+
+<ul>
+<li><strong>Portal Updates</strong>: Mark server as decommissioned</li>
+<li><strong>Asset Transfer</strong>: Move assignable assets to available pool</li>
+<li><strong>Monitoring Cleanup</strong>: Remove from all monitoring systems</li>
+<li><strong>Documentation</strong>: Update inventory and compliance records</li>
+<li><strong>Audit Trail</strong>: Complete decommissioning audit log</li>
+</ul>
+
+<h4 id="sample-output-4">Sample Output</h4>
+
+<pre><code>{
+    "action": "demise_complete",
+    "status": "success",
+    "data": {
+        "server_id": "SRV-12345",
+        "demise_result": {
+            "portal_updated": true,
+            "assets_transferred": true,
+            "monitoring_removed": true,
+            "inventory_updated": true,
+            "compliance_documented": true
+        },
+        "completion_timestamp": "2025-11-04T14:30:00.000000"
+    },
+    "message": "Server SRV-12345 decommissioned successfully. Pipeline complete.",
+    "pipeline_step": 3,
+    "pipeline_complete": true
 }
 </code></pre>
 

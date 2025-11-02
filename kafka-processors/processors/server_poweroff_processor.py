@@ -40,11 +40,11 @@ class ServerPowerOffProcessor(BaseProcessor):
             poweroff_result = self._execute_server_poweroff(server_id, server_details)
             
             if poweroff_result['success']:
-                # Server powered off successfully - proceed to demise request
+                # Server powered off successfully - proceed to cooling period
                 response_data = {
                     "id": str(uuid.uuid4()),
                     "original_request_id": message_data.get('original_request_id', message_data.get('id')),
-                    "action": "demise_server",  # Next action for Processor 3
+                    "action": "start_cooling_period",  # Next action for Processor 2.5
                     "status": "pending",
                     "processor": self.processor_name,
                     "processor_id": self.processor_id,
@@ -56,9 +56,9 @@ class ServerPowerOffProcessor(BaseProcessor):
                         "poweroff_timestamp": datetime.now().isoformat(),
                         "original_request": server_data.get('original_request', {})
                     },
-                    "message": f"Server {server_id} powered off successfully. Ready for demise request.",
+                    "message": f"Server {server_id} powered off successfully. Starting 48-hour cooling period.",
                     "pipeline_step": 2,
-                    "next_step": "demise_server"
+                    "next_step": "cooling_period"
                 }
                 
                 logger.info(f"✅ Server {server_id} powered off successfully")

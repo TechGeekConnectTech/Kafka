@@ -1,8 +1,8 @@
 {
   "status": "running",
-  "pid": 3815914,
-  "timestamp": "2025-11-02T15:00:25.261704",
-  "start_time": "2025-11-02T14:35:24.580216",
-  "processors": 3,
+  "pid": 3958761,
+  "timestamp": "2025-11-02T15:34:12.899526",
+  "start_time": "2025-11-02T15:15:12.005861",
+  "processors": 4,
   "executor_active": true
 }
