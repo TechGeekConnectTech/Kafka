@@ -1,0 +1,1000 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Mahesh Gavandar">
+        <meta name="description" content="Kafka Processors System - File Structure & Configuration Guide">
+        <title>Kafka Processors System - File Structure & Configuration Guide</title>
+        
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    body {
+        font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+    }
+    
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background: white;
+        min-height: 100vh;
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+    
+    /* Header Navigation */
+    .header {
+        background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        color: white;
+        padding: 20px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+    
+    .header h1 {
+        margin: 0;
+        font-size: 2.2em;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    
+    .nav-links {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 15px;
+        flex-wrap: wrap;
+    }
+    
+    .nav-link {
+        background: rgba(255,255,255,0.2);
+        color: white;
+        padding: 8px 16px;
+        text-decoration: none;
+        border-radius: 20px;
+        transition: all 0.3s ease;
+        font-weight: 500;
+        border: 1px solid rgba(255,255,255,0.3);
+    }
+    
+    .nav-link:hover {
+        background: rgba(255,255,255,0.3);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    
+    .nav-link.active {
+        background: #ff6b6b;
+        border-color: #ff6b6b;
+    }
+    
+    /* Content Area */
+    .content {
+        padding: 40px;
+        background: white;
+    }
+    
+    /* Headings */
+    h1 {
+        color: #1e3c72;
+        border-bottom: 3px solid #1e3c72;
+        padding-bottom: 10px;
+        margin: 30px 0 20px 0;
+        font-size: 2.2em;
+        position: relative;
+    }
+    
+    h1:first-child {
+        margin-top: 0;
+    }
+    
+    h1::after {
+        content: '';
+        position: absolute;
+        bottom: -3px;
+        left: 0;
+        width: 50px;
+        height: 3px;
+        background: #ff6b6b;
+    }
+    
+    h2 {
+        color: #2a5298;
+        border-bottom: 2px solid #e0e0e0;
+        padding-bottom: 8px;
+        margin: 25px 0 15px 0;
+        font-size: 1.6em;
+    }
+    
+    h3 {
+        color: #444;
+        margin: 20px 0 10px 0;
+        font-size: 1.3em;
+    }
+    
+    h4 {
+        color: #666;
+        margin: 15px 0 8px 0;
+        font-size: 1.1em;
+    }
+    
+    /* Paragraphs */
+    p {
+        margin: 12px 0;
+        text-align: justify;
+        line-height: 1.7;
+    }
+    
+    /* Code styling */
+    code {
+        background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        padding: 3px 6px;
+        border-radius: 4px;
+        font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+        font-size: 0.9em;
+        color: #d63384;
+        border: 1px solid #dee2e6;
+    }
+    
+    pre {
+        background: linear-gradient(135deg, #2d3748, #4a5568);
+        color: #e2e8f0;
+        border-radius: 8px;
+        padding: 20px;
+        overflow-x: auto;
+        font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+        font-size: 0.85em;
+        line-height: 1.5;
+        margin: 20px 0;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        border-left: 4px solid #ff6b6b;
+    }
+    
+    pre code {
+        background: none;
+        padding: 0;
+        color: #e2e8f0;
+        border: none;
+    }
+    
+    /* Tables */
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin: 20px 0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    
+    th {
+        background: linear-gradient(135deg, #1e3c72, #2a5298);
+        color: white;
+        padding: 15px 12px;
+        text-align: left;
+        font-weight: 600;
+        font-size: 0.95em;
+    }
+    
+    td {
+        padding: 12px;
+        border-bottom: 1px solid #e0e0e0;
+        vertical-align: top;
+    }
+    
+    tr:nth-child(even) {
+        background: #f8f9fa;
+    }
+    
+    tr:hover {
+        background: #e3f2fd;
+        transition: background 0.2s ease;
+    }
+    
+    /* Lists */
+    ul, ol {
+        margin: 15px 0;
+        padding-left: 30px;
+    }
+    
+    li {
+        margin: 8px 0;
+        line-height: 1.6;
+    }
+    
+    ul li::marker {
+        color: #2a5298;
+    }
+    
+    ol li::marker {
+        color: #2a5298;
+        font-weight: bold;
+    }
+    
+    /* Links */
+    a {
+        color: #2a5298;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.2s ease;
+    }
+    
+    a:hover {
+        color: #ff6b6b;
+        text-decoration: underline;
+    }
+    
+    /* Blockquotes */
+    blockquote {
+        border-left: 5px solid #ff6b6b;
+        margin: 20px 0;
+        padding: 15px 25px;
+        background: linear-gradient(135deg, #fff5f5, #fed7d7);
+        font-style: italic;
+        border-radius: 0 8px 8px 0;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    /* Status badges */
+    .badge {
+        display: inline-block;
+        padding: 4px 8px;
+        border-radius: 12px;
+        font-size: 0.8em;
+        font-weight: 600;
+        margin: 2px;
+    }
+    
+    .badge-success { background: #d4edda; color: #155724; }
+    .badge-warning { background: #fff3cd; color: #856404; }
+    .badge-error { background: #f8d7da; color: #721c24; }
+    .badge-info { background: #d1ecf1; color: #0c5460; }
+    
+    /* Footer */
+    .footer {
+        background: linear-gradient(135deg, #2d3748, #4a5568);
+        color: white;
+        padding: 30px;
+        text-align: center;
+        margin-top: 50px;
+    }
+    
+    .footer h3 {
+        color: #ff6b6b;
+        margin-bottom: 10px;
+        font-size: 1.2em;
+    }
+    
+    .footer p {
+        margin: 8px 0;
+        opacity: 0.9;
+    }
+    
+    .footer .developer {
+        background: rgba(255,255,255,0.1);
+        padding: 15px;
+        border-radius: 8px;
+        margin-top: 20px;
+        border: 1px solid rgba(255,255,255,0.2);
+    }
+    
+    .footer .developer strong {
+        color: #ff6b6b;
+        font-size: 1.1em;
+    }
+    
+    /* Back to top button */
+    .back-to-top {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: linear-gradient(135deg, #ff6b6b, #ee5a5a);
+        color: white;
+        padding: 12px;
+        border-radius: 50%;
+        text-decoration: none;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        transition: all 0.3s ease;
+        z-index: 1000;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+    }
+    
+    .back-to-top:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+        background: linear-gradient(135deg, #ee5a5a, #dc4545);
+    }
+    
+    /* Responsive design */
+    @media (max-width: 768px) {
+        .content {
+            padding: 20px;
+        }
+        
+        .header {
+            padding: 15px;
+        }
+        
+        .header h1 {
+            font-size: 1.8em;
+        }
+        
+        .nav-links {
+            gap: 10px;
+        }
+        
+        .nav-link {
+            padding: 6px 12px;
+            font-size: 0.9em;
+        }
+        
+        h1 {
+            font-size: 1.8em;
+        }
+        
+        h2 {
+            font-size: 1.4em;
+        }
+        
+        table {
+            font-size: 0.9em;
+        }
+        
+        pre {
+            padding: 15px;
+            font-size: 0.8em;
+        }
+    }
+    
+    /* Print styles */
+    @media print {
+        body {
+            background: white;
+        }
+        
+        .header, .footer, .back-to-top {
+            display: none;
+        }
+        
+        .container {
+            box-shadow: none;
+        }
+        
+        .content {
+            padding: 0;
+        }
+        
+        h1 {
+            page-break-before: always;
+        }
+        
+        h1:first-child {
+            page-break-before: avoid;
+        }
+        
+        pre, table, blockquote {
+            page-break-inside: avoid;
+        }
+    }
+    </style>
+    
+    </head>
+    <body>
+        <div class="container">
+            <header class="header">
+                <h1>🚀 Kafka Processors System</h1>
+                <p style="text-align: center; margin: 5px 0; opacity: 0.9; font-size: 1.1em;">File Structure & Configuration Guide</p>
+                
+        <div class="nav-links">
+            <a href="Kafka_Processors_System_Documentation.html" class="nav-link">📋 Complete Documentation</a>
+            <a href="File_Structure_Guide.html" class="nav-link active">📁 File Structure Guide</a>
+            <a href="#project-structure" class="nav-link">📂 Structure</a>
+            <a href="#configuration" class="nav-link">⚙️ Configuration</a>
+            <a href="#topic-management" class="nav-link">📊 Topics</a>
+            <a href="http://195.35.6.88:8082" class="nav-link" target="_blank">🚀 Live API</a>
+            <a href="http://195.35.6.88:8080" class="nav-link" target="_blank">📊 Kafka UI</a>
+        </div>
+        
+            </header>
+            
+            <main class="content">
+                <h1 id="kafka-processors-system-file-structure-configuration-guide">Kafka Processors System - File Structure &amp; Configuration Guide</h1>
+
+<h2 id="complete-project-structure">📁 Complete Project Structure</h2>
+
+<pre><code>/root/kafka/kafka-processors/
+├── 📁 api/
+│   └── 📄 main.py                               # FastAPI REST API Server
+├── 📁 config/
+│   ├── 📄 __init__.py                           # Configuration Management Classes  
+│   ├── 📄 config.json                          # Main Configuration File
+│   └── 📄 config.docker.json                   # Docker-Specific Configuration
+├── 📁 processors/
+│   ├── 📄 __init__.py                           # Processor Module Exports
+│   ├── 📄 base_processor.py                    # Abstract Base Processor Class
+│   ├── 📄 show_details_processor.py            # Show Details Business Logic
+│   ├── 📄 update_details_processor.py          # Update Details Business Logic
+│   └── 📄 create_details_processor.py          # Create Details Business Logic
+├── 📁 utils/
+│   ├── 📄 __init__.py                           # Utility Module Exports
+│   └── 📄 kafka_manager.py                     # Kafka Producer/Consumer Wrappers
+├── 📁 logs/
+│   └── 📄 kafka-processors.log                 # Application Log File
+├── 📄 Dockerfile                                # Docker Container Definition
+├── 📄 docker-compose.yml                       # Multi-Service Docker Orchestration
+├── 📄 .dockerignore                            # Docker Build Ignore Patterns
+├── 📄 docker-manage.sh                         # Docker Management Utility
+├── 📄 setup-topics.sh                          # Kafka Topic Creation Script
+├── 📄 start_all.sh                             # Local System Startup Script
+├── 📄 processor_manager.py                     # Main Processor Orchestrator
+├── 📄 test_system.py                           # Comprehensive Test Suite
+├── 📄 requirements.txt                         # Python Dependencies
+├── 📄 README.md                                # Project Documentation
+├── 📄 COMPLETE_DOCUMENTATION.md                # Detailed System Documentation
+├── 📄 create_html_doc.py                       # Documentation HTML Generator
+└── 📄 Kafka_Processors_System_Documentation.html # Generated HTML Documentation
+</code></pre>
+
+<hr />
+
+<h2 id="configuration-files-topic-management">🔧 Configuration Files &amp; Topic Management</h2>
+
+<h3 id="current-kafka-topics">Current Kafka Topics</h3>
+
+<h4 id="details-input-topic">📊 <strong>details-input</strong> Topic</h4>
+
+<ul>
+<li><strong>Purpose</strong>: Receives incoming messages from REST API</li>
+<li><strong>Partitions</strong>: 3 (for load distribution)</li>
+<li><strong>Replication Factor</strong>: 1 (single broker setup)</li>
+<li><strong>Consumer Group</strong>: <code>details-processor-group</code></li>
+</ul>
+
+<h4 id="details-output-topic">📊 <strong>details-output</strong> Topic</h4>
+
+<ul>
+<li><strong>Purpose</strong>: Stores processed results from processors</li>
+<li><strong>Partitions</strong>: 3 (matching input topic)</li>
+<li><strong>Replication Factor</strong>: 1</li>
+<li><strong>Message Format</strong>: Standardized JSON response</li>
+</ul>
+
+<hr />
+
+<h2 id="key-configuration-files-to-modify">📝 Key Configuration Files to Modify</h2>
+
+<h3 id="1-topic-configuration-configconfigjson">1. <strong>Topic Configuration</strong> - <code>config/config.json</code></h3>
+
+<p><strong>Current Configuration:</strong></p>
+
+<pre><code>{
+    "topics": {
+        "input": "details-input",
+        "output": "details-output"
+    }
+}
+</code></pre>
+
+<p><strong>To Change Topics:</strong>
+1. <strong>Update Configuration File</strong>:</p>
+
+<pre><code>{
+    "topics": {
+        "input": "your-new-input-topic",
+        "output": "your-new-output-topic"  
+    }
+}
+</code></pre>
+
+<ol start="2">
+<li><strong>Create New Topics</strong> (Local Installation):</li>
+</ol>
+
+<pre><code>cd /root/kafka
+export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-17.0.16.0.8-2.el8.x86_64
+
+# Create input topic
+bin/kafka-topics.sh --create --topic your-new-input-topic \
+    --bootstrap-server localhost:9092 \
+    --partitions 3 --replication-factor 1
+
+# Create output topic  
+bin/kafka-topics.sh --create --topic your-new-output-topic \
+    --bootstrap-server localhost:9092 \
+    --partitions 3 --replication-factor 1
+</code></pre>
+
+<ol start="3">
+<li><strong>Update Docker Topic Script</strong> - <code>setup-topics.sh</code>:</li>
+</ol>
+
+<pre><code># Replace existing topic names
+docker-compose exec kafka kafka-topics --create \
+    --topic your-new-input-topic \
+    --bootstrap-server localhost:9092 \
+    --partitions 3 --replication-factor 1 --if-not-exists
+</code></pre>
+
+<h3 id="2-processor-configuration-configconfigjson">2. <strong>Processor Configuration</strong> - <code>config/config.json</code></h3>
+
+<p><strong>Current Settings:</strong></p>
+
+<pre><code>{
+    "processors": {
+        "show_details": {
+            "enabled": true,
+            "threads": 2
+        },
+        "update_details": {
+            "enabled": true, 
+            "threads": 2
+        },
+        "create_details": {
+            "enabled": true,
+            "threads": 2
+        }
+    }
+}
+</code></pre>
+
+<p><strong>Modifications:</strong>
+- <strong>Enable/Disable Processors</strong>: Change <code>"enabled": false</code>
+- <strong>Adjust Thread Count</strong>: Change <code>"threads": 4</code> for more concurrent processing
+- <strong>Add New Processors</strong>: Add new processor configurations</p>
+
+<h3 id="3-api-configuration-configconfigjson">3. <strong>API Configuration</strong> - <code>config/config.json</code></h3>
+
+<p><strong>Current Settings:</strong></p>
+
+<pre><code>{
+    "api": {
+        "host": "0.0.0.0",
+        "port": 8082,
+        "debug": true
+    }
+}
+</code></pre>
+
+<p><strong>Port Change</strong>: Update <code>"port": 9000</code> to use different port</p>
+
+<h3 id="4-kafka-connection-configconfigjson">4. <strong>Kafka Connection</strong> - <code>config/config.json</code></h3>
+
+<p><strong>Current Settings:</strong></p>
+
+<pre><code>{
+    "kafka": {
+        "bootstrap_servers": ["localhost:9092"],
+        "group_id": "details-processor-group",
+        "auto_offset_reset": "earliest"
+    }
+}
+</code></pre>
+
+<p><strong>Modifications:</strong>
+- <strong>Change Kafka Server</strong>: Update <code>"bootstrap_servers": ["your-kafka-host:9092"]</code>
+- <strong>Consumer Group</strong>: Change <code>"group_id": "your-consumer-group"</code>
+- <strong>Offset Strategy</strong>: Change <code>"auto_offset_reset": "latest"</code></p>
+
+<hr />
+
+<h2 id="detailed-file-descriptions">📄 Detailed File Descriptions</h2>
+
+<h3 id="core-application-files">🏗️ <strong>Core Application Files</strong></h3>
+
+<h4 id="processor_managerpy-main-orchestrator"><code>processor_manager.py</code> - Main Orchestrator</h4>
+
+<ul>
+<li><strong>Lines of Code</strong>: ~200</li>
+<li><strong>Key Functions</strong>:
+<ul>
+<li><code>initialize_processors()</code>: Creates processor instances</li>
+<li><code>start_consumers()</code>: Starts Kafka message consumption  </li>
+<li><code>_keep_alive()</code>: Maintains service lifecycle</li>
+</ul></li>
+<li><strong>Dependencies</strong>: All processor classes, Kafka manager</li>
+<li><strong>Configuration</strong>: Uses processor thread counts from config</li>
+</ul>
+
+<h4 id="apimainpy-rest-api-server"><code>api/main.py</code> - REST API Server</h4>
+
+<ul>
+<li><strong>Lines of Code</strong>: ~300</li>
+<li><strong>Key Endpoints</strong>:
+<ul>
+<li><code>POST /send-event</code>: Single message processing</li>
+<li><code>POST /send-batch</code>: Bulk message processing</li>
+<li><code>GET /health</code>: System health check</li>
+</ul></li>
+<li><strong>Dependencies</strong>: FastAPI, Pydantic, Kafka manager</li>
+<li><strong>Port</strong>: 8082 (configurable in config.json)</li>
+</ul>
+
+<h3 id="processor-implementation-files">🔄 <strong>Processor Implementation Files</strong></h3>
+
+<h4 id="processorsbase_processorpy-abstract-base-class"><code>processors/base_processor.py</code> - Abstract Base Class</h4>
+
+<ul>
+<li><strong>Lines of Code</strong>: ~150</li>
+<li><strong>Key Methods</strong>:
+<ul>
+<li><code>process_message()</code>: Main processing workflow</li>
+<li><code>_validate_message()</code>: Input validation</li>
+<li><code>_create_response()</code>: Standardized response formatting</li>
+</ul></li>
+<li><strong>Purpose</strong>: Defines common processor interface and behavior</li>
+</ul>
+
+<h4 id="processorsshow_details_processorpy-show-processor"><code>processors/show_details_processor.py</code> - Show Processor</h4>
+
+<ul>
+<li><strong>Lines of Code</strong>: ~100</li>
+<li><strong>Business Logic</strong>: Simulates database record retrieval</li>
+<li><strong>Processing Time</strong>: ~0.1 seconds (configurable)</li>
+<li><strong>Output</strong>: Structured record information with metadata</li>
+</ul>
+
+<h4 id="processorsupdate_details_processorpy-update-processor"><code>processors/update_details_processor.py</code> - Update Processor</h4>
+
+<ul>
+<li><strong>Lines of Code</strong>: ~120</li>
+<li><strong>Business Logic</strong>: Validates and processes record updates</li>
+<li><strong>Validation</strong>: Field length, email format checks</li>
+<li><strong>Processing Time</strong>: ~0.15 seconds (configurable)</li>
+</ul>
+
+<h4 id="processorscreate_details_processorpy-create-processor"><code>processors/create_details_processor.py</code> - Create Processor</h4>
+
+<ul>
+<li><strong>Lines of Code</strong>: ~130  </li>
+<li><strong>Business Logic</strong>: Creates new records with validation</li>
+<li><strong>Required Fields</strong>: <code>name</code> field is mandatory</li>
+<li><strong>Processing Time</strong>: ~0.12 seconds (configurable)</li>
+</ul>
+
+<h3 id="utility-infrastructure-files">🛠️ <strong>Utility &amp; Infrastructure Files</strong></h3>
+
+<h4 id="utilskafka_managerpy-kafka-client-wrapper"><code>utils/kafka_manager.py</code> - Kafka Client Wrapper</h4>
+
+<ul>
+<li><strong>Lines of Code</strong>: ~250</li>
+<li><strong>Classes</strong>:
+<ul>
+<li><code>KafkaProducerWrapper</code>: Thread-safe message publishing</li>
+<li><code>KafkaConsumerWrapper</code>: Concurrent message consumption  </li>
+<li><code>KafkaManager</code>: Unified producer/consumer management</li>
+</ul></li>
+<li><strong>Thread Safety</strong>: Full concurrent operation support</li>
+</ul>
+
+<h4 id="config__init__py-configuration-management"><code>config/__init__.py</code> - Configuration Management</h4>
+
+<ul>
+<li><strong>Lines of Code</strong>: ~80</li>
+<li><strong>Features</strong>:
+<ul>
+<li>JSON configuration loading</li>
+<li>Environment variable overrides</li>
+<li>Type-safe configuration access</li>
+</ul></li>
+<li><strong>Docker Support</strong>: Automatic environment variable detection</li>
+</ul>
+
+<h3 id="docker-deployment-files">🐳 <strong>Docker &amp; Deployment Files</strong></h3>
+
+<h4 id="dockerfile-container-definition"><code>Dockerfile</code> - Container Definition</h4>
+
+<ul>
+<li><strong>Base Image</strong>: <code>python:3.11-slim</code></li>
+<li><strong>Java Version</strong>: OpenJDK 17</li>
+<li><strong>Exposed Port</strong>: 8082</li>
+<li><strong>Health Check</strong>: HTTP endpoint monitoring</li>
+<li><strong>Startup Script</strong>: <code>/app/docker-start.sh</code></li>
+</ul>
+
+<h4 id="docker-composeyml-service-orchestration"><code>docker-compose.yml</code> - Service Orchestration</h4>
+
+<ul>
+<li><strong>Services</strong>: 4 (Zookeeper, Kafka, Kafka-UI, Processors)</li>
+<li><strong>Networks</strong>: Internal Docker networking</li>
+<li><strong>Volumes</strong>: Persistent data storage</li>
+<li><strong>Dependencies</strong>: Service startup ordering</li>
+</ul>
+
+<h4 id="docker-managesh-management-utility"><code>docker-manage.sh</code> - Management Utility</h4>
+
+<ul>
+<li><strong>Commands</strong>: 8 management functions</li>
+<li><strong>Features</strong>: Build, start, stop, logs, status, cleanup</li>
+<li><strong>Usage</strong>: <code>./docker-manage.sh &lt;command&gt;</code></li>
+</ul>
+
+<h3 id="testing-utility-scripts">🧪 <strong>Testing &amp; Utility Scripts</strong></h3>
+
+<h4 id="test_systempy-comprehensive-test-suite"><code>test_system.py</code> - Comprehensive Test Suite</h4>
+
+<ul>
+<li><strong>Lines of Code</strong>: ~200</li>
+<li><strong>Test Cases</strong>:
+<ul>
+<li>API health verification</li>
+<li>Individual processor testing  </li>
+<li>Batch processing validation</li>
+<li>Error handling verification</li>
+</ul></li>
+<li><strong>Dependencies</strong>: requests library</li>
+</ul>
+
+<h4 id="setup-topicssh-topic-creation-docker"><code>setup-topics.sh</code> - Topic Creation (Docker)</h4>
+
+<ul>
+<li><strong>Purpose</strong>: Creates Kafka topics in Docker environment</li>
+<li><strong>Topics Created</strong>: details-input, details-output</li>
+<li><strong>Partition Count</strong>: 3 per topic</li>
+<li><strong>Replication Factor</strong>: 1</li>
+</ul>
+
+<h4 id="start_allsh-local-system-startup"><code>start_all.sh</code> - Local System Startup</h4>
+
+<ul>
+<li><strong>Services Started</strong>: Processor manager, REST API</li>
+<li><strong>Background Processes</strong>: 2 (with PID tracking)</li>
+<li><strong>Shutdown</strong>: Ctrl+C signal handling</li>
+</ul>
+
+<hr />
+
+<h2 id="adding-new-processors">🔄 Adding New Processors</h2>
+
+<h3 id="step-1-create-processor-class">Step 1: Create Processor Class</h3>
+
+<p><strong>File</strong>: <code>processors/new_processor.py</code></p>
+
+<pre><code>from .base_processor import BaseProcessor
+
+class NewProcessor(BaseProcessor):
+    def _should_process(self, message):
+        return message.get('action') == 'new_action'
+
+    def _process_business_logic(self, message):
+        # Your business logic here
+        return {
+            'status': 'success',
+            'data': {'processed': True},
+            'message': 'New action completed'
+        }
+</code></pre>
+
+<h3 id="step-2-update-configuration">Step 2: Update Configuration</h3>
+
+<p><strong>File</strong>: <code>config/config.json</code></p>
+
+<pre><code>{
+    "processors": {
+        "show_details": {"enabled": true, "threads": 2},
+        "update_details": {"enabled": true, "threads": 2},
+        "create_details": {"enabled": true, "threads": 2},
+        "new_processor": {"enabled": true, "threads": 2}
+    }
+}
+</code></pre>
+
+<h3 id="step-3-register-processor">Step 3: Register Processor</h3>
+
+<p><strong>File</strong>: <code>processor_manager.py</code></p>
+
+<pre><code># Add import
+from processors import NewProcessor
+
+# Add to initialize_processors method
+self.processors = [
+    ShowDetailsProcessor(self.kafka_manager, output_topic),
+    UpdateDetailsProcessor(self.kafka_manager, output_topic), 
+    CreateDetailsProcessor(self.kafka_manager, output_topic),
+    NewProcessor(self.kafka_manager, output_topic)  # Add this line
+]
+</code></pre>
+
+<h3 id="step-4-update-module-exports">Step 4: Update Module Exports</h3>
+
+<p><strong>File</strong>: <code>processors/__init__.py</code></p>
+
+<pre><code>from .new_processor import NewProcessor
+
+__all__ = ['ShowDetailsProcessor', 'UpdateDetailsProcessor', 
+           'CreateDetailsProcessor', 'NewProcessor', 'BaseProcessor']
+</code></pre>
+
+<hr />
+
+<h2 id="quick-start-commands">🚀 Quick Start Commands</h2>
+
+<h3 id="local-development">Local Development</h3>
+
+<pre><code># Start system
+cd /root/kafka/kafka-processors
+./start_all.sh
+
+# Test system  
+python3 test_system.py
+
+# View logs
+tail -f logs/kafka-processors.log
+</code></pre>
+
+<h3 id="docker-deployment">Docker Deployment</h3>
+
+<pre><code># Build and start
+./docker-manage.sh build
+./docker-manage.sh up
+
+# Create topics
+./setup-topics.sh
+
+# Test system
+./docker-manage.sh test
+
+# View logs
+./docker-manage.sh logs kafka-processors
+</code></pre>
+
+<h3 id="manual-topic-management">Manual Topic Management</h3>
+
+<pre><code>cd /root/kafka
+export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-17.0.16.0.8-2.el8.x86_64
+
+# List topics
+bin/kafka-topics.sh --list --bootstrap-server localhost:9092
+
+# Describe topic
+bin/kafka-topics.sh --describe --topic details-input --bootstrap-server localhost:9092
+
+# Delete topic (if needed)
+bin/kafka-topics.sh --delete --topic old-topic --bootstrap-server localhost:9092
+</code></pre>
+
+<hr />
+
+<h2 id="performance-configuration">📊 Performance Configuration</h2>
+
+<h3 id="processor-threading">Processor Threading</h3>
+
+<ul>
+<li><strong>Current</strong>: 2 threads per processor type (6 total)</li>
+<li><strong>Recommendation</strong>: Adjust based on CPU cores and workload</li>
+<li><strong>Configuration</strong>: <code>config/config.json</code> → <code>processors[].threads</code></li>
+</ul>
+
+<h3 id="kafka-consumer-settings">Kafka Consumer Settings</h3>
+
+<ul>
+<li><strong>Batch Size</strong>: <code>max_poll_records: 100</code></li>
+<li><strong>Timeout</strong>: <code>consumer_timeout_ms: 5000</code></li>
+<li><strong>Session</strong>: <code>session_timeout_ms: 30000</code></li>
+</ul>
+
+<h3 id="api-server-settings">API Server Settings</h3>
+
+<ul>
+<li><strong>Workers</strong>: Single process (development)</li>
+<li><strong>Production</strong>: Use Gunicorn with multiple workers</li>
+<li><strong>Command</strong>: <code>gunicorn -w 4 -k uvicorn.workers.UvicornWorker api.main:app</code></li>
+</ul>
+
+<hr />
+
+<h2 id="troubleshooting-file-references">🔧 Troubleshooting File References</h2>
+
+<h3 id="log-files">Log Files</h3>
+
+<ul>
+<li><strong>Application</strong>: <code>/root/kafka/kafka-processors/logs/kafka-processors.log</code></li>
+<li><strong>Kafka</strong>: <code>/root/kafka/logs/kafka.log</code> </li>
+<li><strong>Zookeeper</strong>: <code>/root/kafka/logs/zookeeper.log</code></li>
+</ul>
+
+<h3 id="configuration-files">Configuration Files</h3>
+
+<ul>
+<li><strong>Main Config</strong>: <code>/root/kafka/kafka-processors/config/config.json</code></li>
+<li><strong>Kafka Config</strong>: <code>/root/kafka/config/server.properties</code></li>
+<li><strong>Zookeeper Config</strong>: <code>/root/kafka/config/zookeeper.properties</code></li>
+</ul>
+
+<h3 id="key-directories">Key Directories</h3>
+
+<ul>
+<li><strong>Kafka Installation</strong>: <code>/root/kafka/</code></li>
+<li><strong>Project Root</strong>: <code>/root/kafka/kafka-processors/</code></li>
+<li><strong>Python Packages</strong>: Check with <code>pip list</code></li>
+</ul>
+
+<hr />
+
+<p><em>This file structure guide provides complete information for understanding, configuring, and extending the Kafka Processors System. All file paths are relative to the project root unless otherwise specified.</em></p>
+
+            </main>
+            
+            <footer class="footer">
+                <h3>🎯 System Information</h3>
+                <p><strong>Status:</strong> <span class="badge badge-success">✅ Fully Operational</span></p>
+                <p><strong>Version:</strong> 1.0.0 | <strong>API Port:</strong> 8082 | <strong>Kafka Port:</strong> 9092</p>
+                <p><strong>Generated:</strong> November 02, 2025 at 08:13 AM</p>
+                
+                <div class="developer">
+                    <p><strong>🎨 Designed & Developed by</strong></p>
+                    <p><strong>Mahesh Gavandar</strong></p>
+                    <p style="font-size: 0.9em; opacity: 0.8;">Full-Stack Kafka Systems Developer</p>
+                </div>
+                
+                <div style="margin-top: 20px; font-size: 0.9em; opacity: 0.8;">
+                    <p>📧 For support and inquiries about this Kafka Processors System</p>
+                    <p>🔗 <a href="Kafka_Processors_System_Documentation.html" style="color: #ff6b6b;">Complete Documentation</a> | 
+                       <a href="File_Structure_Guide.html" style="color: #ff6b6b;">File Structure Guide</a></p>
+                </div>
+            </footer>
+        </div>
+        
+        <a href="#" class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">↑</a>
+        
+        <script>
+            // Show/hide back to top button
+            window.addEventListener('scroll', function() {
+                const backToTop = document.querySelector('.back-to-top');
+                if (window.scrollY > 300) {
+                    backToTop.style.display = 'flex';
+                } else {
+                    backToTop.style.display = 'none';
+                }
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+            
+            // Add copy functionality to code blocks
+            document.querySelectorAll('pre').forEach(pre => {
+                const button = document.createElement('button');
+                button.textContent = '📋 Copy';
+                button.style.cssText = 'position: absolute; top: 10px; right: 10px; background: rgba(255,255,255,0.2); color: white; border: 1px solid rgba(255,255,255,0.3); padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 12px;';
+                
+                const wrapper = document.createElement('div');
+                wrapper.style.position = 'relative';
+                pre.parentNode.insertBefore(wrapper, pre);
+                wrapper.appendChild(pre);
+                wrapper.appendChild(button);
+                
+                button.addEventListener('click', () => {
+                    const code = pre.querySelector('code') || pre;
+                    navigator.clipboard.writeText(code.textContent).then(() => {
+                        button.textContent = '✅ Copied!';
+                        setTimeout(() => button.textContent = '📋 Copy', 2000);
+                    });
+                });
+            });
+        </script>
+    </body>
+    </html>
+    

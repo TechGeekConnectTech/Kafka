@@ -1,0 +1,48 @@
+{
+    "kafka": {
+        "bootstrap_servers": ["localhost:9092"],
+        "client_id": "kafka-processors",
+        "group_id": "demise-processor-group",
+        "auto_offset_reset": "earliest",
+        "enable_auto_commit": true,
+        "auto_commit_interval_ms": 1000,
+        "session_timeout_ms": 30000,
+        "max_poll_records": 100,
+        "max_poll_interval_ms": 300000,
+        "consumer_timeout_ms": 5000
+    },
+    "topics": {
+        "server_demise_pipeline": {
+            "name": "server-demise-pipeline",
+            "partitions": 3,
+            "replication_factor": 1
+        }
+    },
+    "processors": {
+        "server_check_processor": {
+            "enabled": true,
+            "max_workers": 3,
+            "consumer_timeout": 1000
+        },
+        "server_poweroff_processor": {
+            "enabled": true,
+            "max_workers": 3,
+            "consumer_timeout": 1000
+        },
+        "server_demise_processor": {
+            "enabled": true,
+            "max_workers": 3,
+            "consumer_timeout": 1000
+        }
+    },
+    "api": {
+        "host": "0.0.0.0",
+        "port": 8082,
+        "debug": true
+    },
+    "logging": {
+        "level": "INFO",
+        "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+        "file": "logs/kafka-processors.log"
+    }
+}

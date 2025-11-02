@@ -1,0 +1,719 @@
+2025-11-02 07:44:22,270 - config - INFO - ==================================================
+2025-11-02 07:44:22,271 - config - INFO - KAFKA PROCESSORS MANAGER
+2025-11-02 07:44:22,271 - config - INFO - ==================================================
+2025-11-02 07:44:22,273 - kafka.conn - INFO - <BrokerConnection node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-11-02 07:44:22,274 - kafka.conn - INFO - Probing node bootstrap-0 broker version
+2025-11-02 07:44:22,274 - kafka.conn - INFO - <BrokerConnection node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-11-02 07:44:22,383 - kafka.conn - INFO - Broker version identified as 2.5.0
+2025-11-02 07:44:22,383 - kafka.conn - INFO - Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+2025-11-02 07:44:22,385 - __main__ - INFO - Starting Kafka Processor Manager...
+2025-11-02 07:44:22,385 - __main__ - INFO - Initialized 3 processors
+2025-11-02 07:44:22,386 - __main__ - INFO - Started consumer for topic: details-input with 6 workers
+2025-11-02 07:44:22,386 - __main__ - INFO - Kafka Processor Manager started successfully
+2025-11-02 07:44:22,386 - kafka.conn - INFO - <BrokerConnection node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-11-02 07:44:22,387 - kafka.conn - INFO - Probing node bootstrap-0 broker version
+2025-11-02 07:44:22,387 - kafka.conn - INFO - <BrokerConnection node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-11-02 07:44:22,491 - kafka.conn - INFO - Broker version identified as 2.5.0
+2025-11-02 07:44:22,491 - kafka.conn - INFO - Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+2025-11-02 07:44:22,492 - kafka.consumer.subscription_state - INFO - Updating subscribed topics to: ('details-input',)
+2025-11-02 07:44:22,492 - utils.kafka_manager - INFO - Started consuming from topics: ['details-input']
+2025-11-02 07:44:22,787 - kafka.conn - INFO - <BrokerConnection node_id=0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-11-02 07:44:22,788 - kafka.conn - INFO - <BrokerConnection node_id=0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-11-02 07:44:22,788 - kafka.conn - INFO - <BrokerConnection node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2025-11-02 07:44:23,714 - kafka.cluster - INFO - Group coordinator for details-processor-group is BrokerMetadata(nodeId='coordinator-0', host='localhost', port=9092, rack=None)
+2025-11-02 07:44:23,714 - kafka.coordinator - INFO - Discovered coordinator coordinator-0 for group details-processor-group
+2025-11-02 07:44:23,714 - kafka.coordinator - INFO - Starting new heartbeat thread
+2025-11-02 07:44:23,715 - kafka.coordinator.consumer - INFO - Revoking previously assigned partitions set() for group details-processor-group
+2025-11-02 07:44:23,716 - kafka.conn - INFO - <BrokerConnection node_id=coordinator-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-11-02 07:44:23,716 - kafka.conn - INFO - <BrokerConnection node_id=coordinator-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-11-02 07:44:23,817 - kafka.coordinator - INFO - (Re-)joining group details-processor-group
+2025-11-02 07:44:23,841 - kafka.coordinator - INFO - Elected group leader -- performing partition assignments using range
+2025-11-02 07:44:23,903 - kafka.coordinator - INFO - Successfully joined group details-processor-group with generation 1
+2025-11-02 07:44:23,903 - kafka.consumer.subscription_state - INFO - Updated partition assignment: [TopicPartition(topic='details-input', partition=0), TopicPartition(topic='details-input', partition=1), TopicPartition(topic='details-input', partition=2)]
+2025-11-02 07:44:23,903 - kafka.coordinator.consumer - INFO - Setting newly assigned partitions {TopicPartition(topic='details-input', partition=1), TopicPartition(topic='details-input', partition=2), TopicPartition(topic='details-input', partition=0)} for group details-processor-group
+2025-11-02 07:44:38,994 - __main__ - INFO - Received signal 2, initiating graceful shutdown...
+2025-11-02 07:49:02,893 - config - INFO - ==================================================
+2025-11-02 07:49:02,893 - config - INFO - KAFKA PROCESSORS MANAGER
+2025-11-02 07:49:02,893 - config - INFO - ==================================================
+2025-11-02 07:49:02,895 - kafka.conn - INFO - <BrokerConnection node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-11-02 07:49:02,895 - kafka.conn - INFO - Probing node bootstrap-0 broker version
+2025-11-02 07:49:02,895 - kafka.conn - INFO - <BrokerConnection node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-11-02 07:49:03,004 - kafka.conn - INFO - Broker version identified as 2.5.0
+2025-11-02 07:49:03,004 - kafka.conn - INFO - Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+2025-11-02 07:49:03,007 - __main__ - INFO - Starting Kafka Processor Manager...
+2025-11-02 07:49:03,008 - __main__ - INFO - Initialized 3 processors
+2025-11-02 07:49:03,012 - kafka.conn - INFO - <BrokerConnection node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-11-02 07:49:03,012 - kafka.conn - INFO - Probing node bootstrap-0 broker version
+2025-11-02 07:49:03,013 - kafka.conn - INFO - <BrokerConnection node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-11-02 07:49:03,013 - __main__ - INFO - Started consumer for topic: details-input with 6 workers
+2025-11-02 07:49:03,013 - __main__ - INFO - Kafka Processor Manager started successfully
+2025-11-02 07:49:03,118 - kafka.conn - INFO - Broker version identified as 2.5.0
+2025-11-02 07:49:03,118 - kafka.conn - INFO - Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+2025-11-02 07:49:03,118 - kafka.consumer.subscription_state - INFO - Updating subscribed topics to: ('details-input',)
+2025-11-02 07:49:03,119 - utils.kafka_manager - INFO - Started consuming from topics: ['details-input']
+2025-11-02 07:49:03,122 - kafka.cluster - INFO - Group coordinator for details-processor-group is BrokerMetadata(nodeId='coordinator-0', host='localhost', port=9092, rack=None)
+2025-11-02 07:49:03,122 - kafka.coordinator - INFO - Discovered coordinator coordinator-0 for group details-processor-group
+2025-11-02 07:49:03,122 - kafka.coordinator - INFO - Starting new heartbeat thread
+2025-11-02 07:49:03,123 - kafka.coordinator.consumer - INFO - Revoking previously assigned partitions set() for group details-processor-group
+2025-11-02 07:49:03,124 - kafka.conn - INFO - <BrokerConnection node_id=coordinator-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-11-02 07:49:03,124 - kafka.conn - INFO - <BrokerConnection node_id=coordinator-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-11-02 07:49:03,124 - kafka.conn - INFO - <BrokerConnection node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2025-11-02 07:49:03,225 - kafka.coordinator - INFO - (Re-)joining group details-processor-group
+2025-11-02 07:49:03,229 - kafka.coordinator - INFO - Elected group leader -- performing partition assignments using range
+2025-11-02 07:49:03,230 - kafka.conn - INFO - <BrokerConnection node_id=0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-11-02 07:49:03,230 - kafka.conn - INFO - <BrokerConnection node_id=0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-11-02 07:49:03,232 - kafka.coordinator - INFO - Successfully joined group details-processor-group with generation 3
+2025-11-02 07:49:03,232 - kafka.consumer.subscription_state - INFO - Updated partition assignment: [TopicPartition(topic='details-input', partition=0), TopicPartition(topic='details-input', partition=1), TopicPartition(topic='details-input', partition=2)]
+2025-11-02 07:49:03,232 - kafka.coordinator.consumer - INFO - Setting newly assigned partitions {TopicPartition(topic='details-input', partition=0), TopicPartition(topic='details-input', partition=1), TopicPartition(topic='details-input', partition=2)} for group details-processor-group
+2025-11-02 07:49:06,495 - kafka.conn - INFO - <BrokerConnection node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-11-02 07:49:06,495 - kafka.conn - INFO - Probing node bootstrap-0 broker version
+2025-11-02 07:49:06,496 - kafka.conn - INFO - <BrokerConnection node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-11-02 07:49:06,601 - kafka.conn - INFO - Broker version identified as 2.5.0
+2025-11-02 07:49:06,601 - kafka.conn - INFO - Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+2025-11-02 07:49:06,612 - config - INFO - Starting Kafka Processors API
+2025-11-02 07:49:06,624 - kafka.conn - INFO - <BrokerConnection node_id=0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-11-02 07:49:06,625 - kafka.conn - INFO - <BrokerConnection node_id=0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-11-02 07:49:06,625 - kafka.conn - INFO - <BrokerConnection node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2025-11-02 07:49:06,640 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 0
+2025-11-02 07:49:06,640 - config - INFO - Kafka connection test successful
+2025-11-02 07:49:06,644 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 0
+2025-11-02 07:49:06,645 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 07:49:06,656 - kafka.conn - INFO - <BrokerConnection node_id=0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-11-02 07:49:06,656 - kafka.conn - INFO - <BrokerConnection node_id=0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-11-02 07:49:06,656 - kafka.conn - INFO - <BrokerConnection node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2025-11-02 07:49:06,662 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 0
+2025-11-02 07:49:06,662 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 07:49:06,680 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 1
+2025-11-02 07:49:06,681 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 07:49:06,711 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 2
+2025-11-02 07:49:07,049 - config - INFO - Shutting down Kafka Processors API
+2025-11-02 07:49:07,050 - kafka.producer.kafka - INFO - Closing the Kafka producer with 9223372036.0 secs timeout.
+2025-11-02 07:49:07,050 - kafka.conn - INFO - <BrokerConnection node_id=0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2025-11-02 07:49:07,723 - kafka.conn - INFO - <BrokerConnection node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-11-02 07:49:07,723 - kafka.conn - INFO - Probing node bootstrap-0 broker version
+2025-11-02 07:49:07,723 - kafka.conn - INFO - <BrokerConnection node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-11-02 07:49:07,832 - kafka.conn - INFO - Broker version identified as 2.5.0
+2025-11-02 07:49:07,832 - kafka.conn - INFO - Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+2025-11-02 07:49:07,846 - config - INFO - Starting Kafka Processors API
+2025-11-02 07:49:07,858 - kafka.conn - INFO - <BrokerConnection node_id=0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-11-02 07:49:07,858 - kafka.conn - INFO - <BrokerConnection node_id=0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-11-02 07:49:07,858 - kafka.conn - INFO - <BrokerConnection node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2025-11-02 07:49:07,865 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 1
+2025-11-02 07:49:07,865 - config - INFO - Kafka connection test successful
+2025-11-02 07:49:07,869 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 1
+2025-11-02 07:49:07,869 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 07:49:07,882 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 0
+2025-11-02 07:49:07,882 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 07:49:07,896 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 3
+2025-11-02 07:49:07,897 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 07:49:07,910 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 0
+2025-11-02 07:49:18,490 - __main__ - INFO - Received signal 2, initiating graceful shutdown...
+2025-11-02 07:49:18,490 - __main__ - INFO - Shutting down processor manager...
+2025-11-02 07:49:18,490 - kafka.producer.kafka - INFO - Closing the Kafka producer with 9223372036.0 secs timeout.
+2025-11-02 07:49:18,491 - __main__ - INFO - Received signal 15, initiating graceful shutdown...
+2025-11-02 07:49:18,491 - kafka.conn - INFO - <BrokerConnection node_id=0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2025-11-02 07:49:18,605 - config - INFO - Shutting down Kafka Processors API
+2025-11-02 07:49:18,605 - kafka.producer.kafka - INFO - Closing the Kafka producer with 9223372036.0 secs timeout.
+2025-11-02 07:49:18,606 - kafka.conn - INFO - <BrokerConnection node_id=0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2025-11-02 07:49:18,892 - utils.kafka_manager - INFO - Stopped consuming messages
+2025-11-02 07:49:18,896 - kafka.coordinator - INFO - Stopping heartbeat thread
+2025-11-02 07:49:18,896 - kafka.coordinator - INFO - Leaving consumer group (details-processor-group).
+2025-11-02 07:49:18,913 - kafka.conn - INFO - <BrokerConnection node_id=coordinator-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2025-11-02 07:49:18,914 - kafka.conn - INFO - <BrokerConnection node_id=0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2025-11-02 07:49:18,914 - kafka.consumer.fetcher - ERROR - Fetch to node 0 failed: Cancelled: <BrokerConnection node_id=0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>
+2025-11-02 07:49:18,914 - utils.kafka_manager - INFO - Stopped consuming messages
+2025-11-02 07:49:18,914 - __main__ - INFO - Processor manager shutdown complete
+2025-11-02 07:49:19,019 - __main__ - WARNING - Some consumer threads have died, shutting down...
+2025-11-02 07:49:34,592 - config - INFO - ==================================================
+2025-11-02 07:49:34,593 - config - INFO - KAFKA PROCESSORS MANAGER
+2025-11-02 07:49:34,593 - config - INFO - ==================================================
+2025-11-02 07:49:34,595 - kafka.conn - INFO - <BrokerConnection node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-11-02 07:49:34,595 - kafka.conn - INFO - Probing node bootstrap-0 broker version
+2025-11-02 07:49:34,596 - kafka.conn - INFO - <BrokerConnection node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-11-02 07:49:34,699 - kafka.conn - INFO - Broker version identified as 2.5.0
+2025-11-02 07:49:34,699 - kafka.conn - INFO - Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+2025-11-02 07:49:34,702 - __main__ - INFO - Starting Kafka Processor Manager...
+2025-11-02 07:49:34,702 - __main__ - INFO - Initialized 3 processors
+2025-11-02 07:49:34,704 - kafka.conn - INFO - <BrokerConnection node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-11-02 07:49:34,704 - kafka.conn - INFO - Probing node bootstrap-0 broker version
+2025-11-02 07:49:34,704 - kafka.conn - INFO - <BrokerConnection node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-11-02 07:49:34,704 - __main__ - INFO - Started consumer for topic: details-input with 6 workers
+2025-11-02 07:49:34,704 - __main__ - INFO - Kafka Processor Manager started successfully
+2025-11-02 07:49:34,810 - kafka.conn - INFO - Broker version identified as 2.5.0
+2025-11-02 07:49:34,811 - kafka.conn - INFO - Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+2025-11-02 07:49:34,811 - kafka.consumer.subscription_state - INFO - Updating subscribed topics to: ('details-input',)
+2025-11-02 07:49:34,811 - utils.kafka_manager - INFO - Started consuming from topics: ['details-input']
+2025-11-02 07:49:34,812 - kafka.cluster - INFO - Group coordinator for details-processor-group is BrokerMetadata(nodeId='coordinator-0', host='localhost', port=9092, rack=None)
+2025-11-02 07:49:34,813 - kafka.coordinator - INFO - Discovered coordinator coordinator-0 for group details-processor-group
+2025-11-02 07:49:34,813 - kafka.coordinator - INFO - Starting new heartbeat thread
+2025-11-02 07:49:34,813 - kafka.coordinator.consumer - INFO - Revoking previously assigned partitions set() for group details-processor-group
+2025-11-02 07:49:34,814 - kafka.conn - INFO - <BrokerConnection node_id=coordinator-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-11-02 07:49:34,814 - kafka.conn - INFO - <BrokerConnection node_id=coordinator-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-11-02 07:49:34,814 - kafka.conn - INFO - <BrokerConnection node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2025-11-02 07:49:34,915 - kafka.coordinator - INFO - (Re-)joining group details-processor-group
+2025-11-02 07:49:34,920 - kafka.coordinator - INFO - Elected group leader -- performing partition assignments using range
+2025-11-02 07:49:34,921 - kafka.conn - INFO - <BrokerConnection node_id=0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-11-02 07:49:34,921 - kafka.conn - INFO - <BrokerConnection node_id=0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-11-02 07:49:34,923 - kafka.coordinator - INFO - Successfully joined group details-processor-group with generation 5
+2025-11-02 07:49:34,923 - kafka.consumer.subscription_state - INFO - Updated partition assignment: [TopicPartition(topic='details-input', partition=0), TopicPartition(topic='details-input', partition=1), TopicPartition(topic='details-input', partition=2)]
+2025-11-02 07:49:34,923 - kafka.coordinator.consumer - INFO - Setting newly assigned partitions {TopicPartition(topic='details-input', partition=1), TopicPartition(topic='details-input', partition=2), TopicPartition(topic='details-input', partition=0)} for group details-processor-group
+2025-11-02 07:49:38,095 - kafka.conn - INFO - <BrokerConnection node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-11-02 07:49:38,096 - kafka.conn - INFO - Probing node bootstrap-0 broker version
+2025-11-02 07:49:38,096 - kafka.conn - INFO - <BrokerConnection node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-11-02 07:49:38,198 - kafka.conn - INFO - Broker version identified as 2.5.0
+2025-11-02 07:49:38,199 - kafka.conn - INFO - Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+2025-11-02 07:49:38,208 - config - INFO - Starting Kafka Processors API
+2025-11-02 07:49:38,219 - kafka.conn - INFO - <BrokerConnection node_id=0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-11-02 07:49:38,220 - kafka.conn - INFO - <BrokerConnection node_id=0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-11-02 07:49:38,220 - kafka.conn - INFO - <BrokerConnection node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2025-11-02 07:49:38,224 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 2
+2025-11-02 07:49:38,225 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 07:49:38,225 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 2
+2025-11-02 07:49:38,225 - config - INFO - Kafka connection test successful
+2025-11-02 07:49:38,236 - kafka.conn - INFO - <BrokerConnection node_id=0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-11-02 07:49:38,237 - kafka.conn - INFO - <BrokerConnection node_id=0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-11-02 07:49:38,237 - kafka.conn - INFO - <BrokerConnection node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2025-11-02 07:49:38,247 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 1
+2025-11-02 07:49:38,248 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 07:49:38,261 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 2
+2025-11-02 07:49:38,261 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 07:49:38,279 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 1
+2025-11-02 07:49:47,223 - utils.kafka_manager - INFO - Message sent to details-input - partition: 2, offset: 0
+2025-11-02 07:49:47,223 - config - INFO - Event sent successfully: a47eb6b4-3778-4742-802e-2bd38ee754e8 - Action: show_details
+2025-11-02 07:49:47,226 - utils.kafka_manager - INFO - Processing message from details-input - partition: 2, offset: 0
+2025-11-02 07:49:47,226 - processors.base_processor - INFO - Processing message with action: show_details
+2025-11-02 07:49:47,226 - processors.show_details_processor - INFO - Processing show_details for ID: a47eb6b4-3778-4742-802e-2bd38ee754e8
+2025-11-02 07:49:47,326 - processors.show_details_processor - INFO - Successfully retrieved details for ID: a47eb6b4-3778-4742-802e-2bd38ee754e8
+2025-11-02 07:49:47,339 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 4
+2025-11-02 07:49:47,339 - processors.base_processor - INFO - Sent response for message ID: a47eb6b4-3778-4742-802e-2bd38ee754e8
+2025-11-02 07:49:47,340 - processors.base_processor - INFO - Processing message with action: show_details
+2025-11-02 07:49:47,340 - processors.base_processor - INFO - Processing message with action: show_details
+2025-11-02 07:51:23,782 - utils.kafka_manager - INFO - Message sent to details-input - partition: 0, offset: 0
+2025-11-02 07:51:23,782 - config - INFO - Event sent successfully: ebb77795-8c43-4135-bf9f-8b9d6791a1de - Action: show_details
+2025-11-02 07:51:23,784 - utils.kafka_manager - INFO - Processing message from details-input - partition: 0, offset: 0
+2025-11-02 07:51:23,784 - processors.base_processor - INFO - Processing message with action: show_details
+2025-11-02 07:51:23,784 - processors.show_details_processor - INFO - Processing show_details for ID: ebb77795-8c43-4135-bf9f-8b9d6791a1de
+2025-11-02 07:51:23,885 - processors.show_details_processor - INFO - Successfully retrieved details for ID: ebb77795-8c43-4135-bf9f-8b9d6791a1de
+2025-11-02 07:51:23,899 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 2
+2025-11-02 07:51:23,899 - processors.base_processor - INFO - Sent response for message ID: ebb77795-8c43-4135-bf9f-8b9d6791a1de
+2025-11-02 07:51:23,899 - processors.base_processor - INFO - Processing message with action: show_details
+2025-11-02 07:51:23,899 - processors.base_processor - INFO - Processing message with action: show_details
+2025-11-02 07:55:14,439 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 3
+2025-11-02 07:55:14,440 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 3
+2025-11-02 07:55:14,440 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 07:55:14,453 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 5
+2025-11-02 07:55:14,453 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 07:55:14,466 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 6
+2025-11-02 07:55:14,467 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 07:55:14,480 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 3
+2025-11-02 08:14:38,341 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 4
+2025-11-02 08:14:38,341 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 4
+2025-11-02 08:14:38,341 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:14:38,354 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 3
+2025-11-02 08:14:38,354 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:14:38,366 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 4
+2025-11-02 08:14:38,367 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:14:38,382 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 4
+2025-11-02 08:14:46,420 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 5
+2025-11-02 08:14:46,420 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 5
+2025-11-02 08:14:46,420 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:14:46,433 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 5
+2025-11-02 08:14:46,433 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:14:46,446 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 7
+2025-11-02 08:14:46,446 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:14:46,460 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 6
+2025-11-02 08:15:06,923 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 6
+2025-11-02 08:15:06,924 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 6
+2025-11-02 08:15:06,924 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:15:06,936 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 5
+2025-11-02 08:15:06,937 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:15:06,949 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 7
+2025-11-02 08:15:06,949 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:15:06,962 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 8
+2025-11-02 08:16:55,156 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 7
+2025-11-02 08:16:55,156 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 7
+2025-11-02 08:16:55,157 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:16:55,169 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 6
+2025-11-02 08:16:55,169 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:16:55,181 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 9
+2025-11-02 08:16:55,181 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:16:55,193 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 7
+2025-11-02 08:19:53,204 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 8
+2025-11-02 08:19:53,205 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 8
+2025-11-02 08:19:53,205 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:19:53,218 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 8
+2025-11-02 08:19:53,218 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:19:53,229 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 9
+2025-11-02 08:19:53,230 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:19:53,241 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 10
+2025-11-02 08:21:22,385 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 9
+2025-11-02 08:21:22,385 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 9
+2025-11-02 08:21:22,386 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:21:22,404 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 11
+2025-11-02 08:21:22,404 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:21:22,417 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 8
+2025-11-02 08:21:22,418 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:21:22,430 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 10
+2025-11-02 08:21:33,248 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 10
+2025-11-02 08:21:33,249 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 10
+2025-11-02 08:21:33,249 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:21:33,261 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 12
+2025-11-02 08:21:33,262 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:21:33,281 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 11
+2025-11-02 08:21:33,281 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:21:33,294 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 9
+2025-11-02 08:22:32,734 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 11
+2025-11-02 08:22:32,736 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 11
+2025-11-02 08:22:32,736 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:22:32,748 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 12
+2025-11-02 08:22:32,748 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:22:32,760 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 13
+2025-11-02 08:22:32,761 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:22:32,779 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 14
+2025-11-02 08:22:59,702 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 12
+2025-11-02 08:22:59,703 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 12
+2025-11-02 08:22:59,703 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:22:59,715 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 15
+2025-11-02 08:22:59,715 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:22:59,727 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 16
+2025-11-02 08:22:59,728 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:22:59,740 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 17
+2025-11-02 08:24:50,157 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 13
+2025-11-02 08:24:50,158 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 13
+2025-11-02 08:24:50,158 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:24:50,170 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 13
+2025-11-02 08:24:50,170 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:24:50,187 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 18
+2025-11-02 08:24:50,187 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:24:50,199 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 10
+2025-11-02 08:25:49,627 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 14
+2025-11-02 08:25:49,627 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 14
+2025-11-02 08:25:49,627 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:25:49,641 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 14
+2025-11-02 08:25:49,641 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:25:49,654 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 15
+2025-11-02 08:25:49,654 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:25:49,667 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 19
+2025-11-02 08:28:02,154 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 15
+2025-11-02 08:28:02,156 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 15
+2025-11-02 08:28:02,156 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:28:02,172 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 16
+2025-11-02 08:28:02,172 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:28:02,190 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 17
+2025-11-02 08:28:02,190 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:28:02,204 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 11
+2025-11-02 08:28:08,767 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 16
+2025-11-02 08:28:08,768 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 16
+2025-11-02 08:28:08,768 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:28:08,781 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 20
+2025-11-02 08:28:08,781 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:28:08,798 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 12
+2025-11-02 08:28:08,798 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:28:08,811 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 13
+2025-11-02 08:30:56,094 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 17
+2025-11-02 08:30:56,094 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 17
+2025-11-02 08:30:56,094 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:30:56,107 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 14
+2025-11-02 08:30:56,107 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:30:56,119 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 15
+2025-11-02 08:30:56,119 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:30:56,132 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 18
+2025-11-02 08:33:38,426 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 18
+2025-11-02 08:33:38,426 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 18
+2025-11-02 08:33:38,426 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:33:38,438 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 21
+2025-11-02 08:33:38,438 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:33:38,455 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 16
+2025-11-02 08:33:38,455 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:33:38,467 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 19
+2025-11-02 08:34:01,633 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 19
+2025-11-02 08:34:01,633 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:34:01,639 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 19
+2025-11-02 08:34:01,647 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 20
+2025-11-02 08:34:01,647 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:34:01,662 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 22
+2025-11-02 08:34:01,662 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:34:01,676 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 21
+2025-11-02 08:34:48,359 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 20
+2025-11-02 08:34:48,360 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 20
+2025-11-02 08:34:48,360 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:34:48,372 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 22
+2025-11-02 08:34:48,372 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:34:48,384 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 17
+2025-11-02 08:34:48,384 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:34:48,399 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 18
+2025-11-02 08:35:36,286 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 21
+2025-11-02 08:35:36,286 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 21
+2025-11-02 08:35:36,286 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:35:36,298 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 19
+2025-11-02 08:35:36,298 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:35:36,311 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 23
+2025-11-02 08:35:36,311 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:35:36,323 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 24
+2025-11-02 08:35:44,067 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 22
+2025-11-02 08:35:44,068 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 22
+2025-11-02 08:35:44,069 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:35:44,081 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 25
+2025-11-02 08:35:44,081 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:35:44,094 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 23
+2025-11-02 08:35:44,094 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:35:44,107 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 20
+2025-11-02 08:36:34,513 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 23
+2025-11-02 08:36:34,514 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 23
+2025-11-02 08:36:34,514 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:36:34,526 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 24
+2025-11-02 08:36:34,526 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:36:34,539 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 26
+2025-11-02 08:36:34,539 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:36:34,551 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 25
+2025-11-02 08:37:47,380 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 24
+2025-11-02 08:37:47,380 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 24
+2025-11-02 08:37:47,381 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:37:47,394 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 21
+2025-11-02 08:37:47,394 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:37:47,406 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 27
+2025-11-02 08:37:47,406 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:37:47,419 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 26
+2025-11-02 08:39:02,998 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 25
+2025-11-02 08:39:02,998 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:39:03,000 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 25
+2025-11-02 08:39:03,013 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 22
+2025-11-02 08:39:03,013 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:39:03,026 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 28
+2025-11-02 08:39:03,026 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:39:03,040 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 29
+2025-11-02 08:41:17,067 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 26
+2025-11-02 08:41:17,072 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 26
+2025-11-02 08:41:17,073 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:41:17,085 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 27
+2025-11-02 08:41:17,086 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:41:17,098 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 23
+2025-11-02 08:41:17,098 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:41:17,111 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 28
+2025-11-02 08:41:34,327 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 27
+2025-11-02 08:41:34,329 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 27
+2025-11-02 08:41:34,329 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:41:34,342 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 24
+2025-11-02 08:41:34,343 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:41:34,355 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 30
+2025-11-02 08:41:34,355 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:41:34,367 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 31
+2025-11-02 08:41:45,504 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 28
+2025-11-02 08:41:45,506 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 28
+2025-11-02 08:41:45,506 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:41:45,518 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 25
+2025-11-02 08:41:45,519 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:41:45,531 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 26
+2025-11-02 08:41:45,531 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:41:45,543 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 27
+2025-11-02 08:41:53,386 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 29
+2025-11-02 08:41:53,391 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 29
+2025-11-02 08:41:53,392 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:41:53,404 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 32
+2025-11-02 08:41:53,405 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:41:53,417 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 33
+2025-11-02 08:41:53,417 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:41:53,429 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 34
+2025-11-02 08:43:24,811 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 30
+2025-11-02 08:43:24,813 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 30
+2025-11-02 08:43:24,813 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:43:24,826 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 35
+2025-11-02 08:43:24,826 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:43:24,839 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 36
+2025-11-02 08:43:24,839 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:43:24,852 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 29
+2025-11-02 08:43:44,937 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 31
+2025-11-02 08:43:44,937 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 31
+2025-11-02 08:43:44,938 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:43:44,951 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 28
+2025-11-02 08:43:44,951 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:43:44,964 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 30
+2025-11-02 08:43:44,964 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:43:44,977 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 31
+2025-11-02 08:44:05,137 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 32
+2025-11-02 08:44:05,138 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 32
+2025-11-02 08:44:05,139 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:44:05,160 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 32
+2025-11-02 08:44:05,160 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:44:05,173 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 29
+2025-11-02 08:44:05,173 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:44:05,187 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 33
+2025-11-02 08:44:16,344 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 33
+2025-11-02 08:44:16,345 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 33
+2025-11-02 08:44:16,345 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:44:16,358 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 34
+2025-11-02 08:44:16,358 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:44:16,371 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 30
+2025-11-02 08:44:16,371 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:44:16,383 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 31
+2025-11-02 08:47:01,499 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 34
+2025-11-02 08:47:01,501 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 34
+2025-11-02 08:47:01,501 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:47:01,514 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 32
+2025-11-02 08:47:01,514 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:47:01,527 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 37
+2025-11-02 08:47:01,528 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:47:01,542 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 38
+2025-11-02 08:51:25,583 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 35
+2025-11-02 08:51:25,584 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 35
+2025-11-02 08:51:25,584 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:51:25,596 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 39
+2025-11-02 08:51:25,597 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:51:25,609 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 35
+2025-11-02 08:51:25,609 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:51:25,622 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 40
+2025-11-02 08:59:08,089 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 36
+2025-11-02 08:59:08,089 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 36
+2025-11-02 08:59:08,090 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:59:08,103 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 33
+2025-11-02 08:59:08,103 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:59:08,116 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 34
+2025-11-02 08:59:08,116 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:59:08,128 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 35
+2025-11-02 08:59:11,233 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 37
+2025-11-02 08:59:11,235 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 37
+2025-11-02 08:59:11,235 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:59:11,248 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 36
+2025-11-02 08:59:11,248 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:59:11,261 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 41
+2025-11-02 08:59:11,261 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 08:59:11,273 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 42
+2025-11-02 09:03:19,006 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 38
+2025-11-02 09:03:19,007 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 38
+2025-11-02 09:03:19,007 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:03:19,019 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 37
+2025-11-02 09:03:19,019 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:03:19,035 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 36
+2025-11-02 09:03:19,035 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:03:19,047 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 43
+2025-11-02 09:03:32,390 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 39
+2025-11-02 09:03:32,391 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 39
+2025-11-02 09:03:32,391 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:03:32,404 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 38
+2025-11-02 09:03:32,404 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:03:32,418 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 44
+2025-11-02 09:03:32,418 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:03:32,430 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 45
+2025-11-02 09:03:33,308 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 40
+2025-11-02 09:03:33,309 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 40
+2025-11-02 09:03:33,309 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:03:33,321 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 46
+2025-11-02 09:03:33,322 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:03:33,334 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 37
+2025-11-02 09:03:33,334 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:03:33,347 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 38
+2025-11-02 09:03:40,091 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 41
+2025-11-02 09:03:40,092 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 41
+2025-11-02 09:03:40,092 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:03:40,104 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 39
+2025-11-02 09:03:40,104 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:03:40,117 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 47
+2025-11-02 09:03:40,117 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:03:40,130 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 39
+2025-11-02 09:04:46,150 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 42
+2025-11-02 09:04:46,151 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 42
+2025-11-02 09:04:46,151 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:04:46,163 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 40
+2025-11-02 09:04:46,163 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:04:46,175 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 40
+2025-11-02 09:04:46,175 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:04:46,188 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 41
+2025-11-02 09:18:12,214 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 43
+2025-11-02 09:18:12,215 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 43
+2025-11-02 09:18:12,215 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:18:12,228 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 48
+2025-11-02 09:18:12,228 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:18:12,241 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 42
+2025-11-02 09:18:12,241 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:18:12,253 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 43
+2025-11-02 09:23:16,559 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 44
+2025-11-02 09:23:16,560 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 44
+2025-11-02 09:23:16,561 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:23:16,573 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 44
+2025-11-02 09:23:16,573 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:23:16,585 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 41
+2025-11-02 09:23:16,585 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:23:16,597 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 42
+2025-11-02 09:24:34,612 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 45
+2025-11-02 09:24:34,613 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 45
+2025-11-02 09:24:34,613 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:24:34,625 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 49
+2025-11-02 09:24:34,625 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:24:34,637 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 45
+2025-11-02 09:24:34,637 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:24:34,649 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 43
+2025-11-02 09:25:38,911 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 46
+2025-11-02 09:25:38,912 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 46
+2025-11-02 09:25:38,912 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:25:38,925 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 50
+2025-11-02 09:25:38,925 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:25:38,937 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 46
+2025-11-02 09:25:38,937 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:25:38,950 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 47
+2025-11-02 09:25:52,855 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 47
+2025-11-02 09:25:52,855 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 47
+2025-11-02 09:25:52,856 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:25:52,868 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 48
+2025-11-02 09:25:52,868 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:25:52,879 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 51
+2025-11-02 09:25:52,880 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:25:52,891 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 49
+2025-11-02 09:26:11,300 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 48
+2025-11-02 09:26:11,300 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 48
+2025-11-02 09:26:11,300 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:26:11,312 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 52
+2025-11-02 09:26:11,312 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:26:11,325 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 50
+2025-11-02 09:26:11,325 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:26:11,337 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 53
+2025-11-02 09:26:21,672 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 49
+2025-11-02 09:26:21,672 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 49
+2025-11-02 09:26:21,672 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:26:21,684 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 44
+2025-11-02 09:26:21,684 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:26:21,696 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 51
+2025-11-02 09:26:21,696 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:26:21,708 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 45
+2025-11-02 09:26:26,043 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 50
+2025-11-02 09:26:26,045 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 50
+2025-11-02 09:26:26,045 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:26:26,057 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 54
+2025-11-02 09:26:26,057 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:26:26,069 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 46
+2025-11-02 09:26:26,069 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:26:26,082 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 47
+2025-11-02 09:26:30,488 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 51
+2025-11-02 09:26:30,488 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:26:30,488 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 51
+2025-11-02 09:26:30,500 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 52
+2025-11-02 09:26:30,500 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:26:30,513 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 55
+2025-11-02 09:26:30,513 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:26:30,539 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 56
+2025-11-02 09:27:44,466 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 52
+2025-11-02 09:27:44,466 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 52
+2025-11-02 09:27:44,466 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:27:44,478 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 48
+2025-11-02 09:27:44,478 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:27:44,491 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 53
+2025-11-02 09:27:44,491 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:27:44,503 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 49
+2025-11-02 09:27:49,589 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 53
+2025-11-02 09:27:49,590 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 53
+2025-11-02 09:27:49,590 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:27:49,602 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 54
+2025-11-02 09:27:49,602 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:27:49,616 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 55
+2025-11-02 09:27:49,617 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:27:49,629 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 50
+2025-11-02 09:27:55,440 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 54
+2025-11-02 09:27:55,446 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 54
+2025-11-02 09:27:55,446 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:27:55,458 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 56
+2025-11-02 09:27:55,458 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:27:55,470 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 57
+2025-11-02 09:27:55,470 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:27:55,483 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 51
+2025-11-02 09:34:06,854 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 55
+2025-11-02 09:34:06,855 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 55
+2025-11-02 09:34:06,855 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:34:06,867 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 57
+2025-11-02 09:34:06,868 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:34:06,881 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 58
+2025-11-02 09:34:06,881 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:34:06,895 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 58
+2025-11-02 09:39:12,920 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 56
+2025-11-02 09:39:12,920 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 56
+2025-11-02 09:39:12,920 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:39:12,932 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 59
+2025-11-02 09:39:12,932 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:39:12,944 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 59
+2025-11-02 09:39:12,944 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:39:12,956 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 60
+2025-11-02 09:46:25,806 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 57
+2025-11-02 09:46:25,807 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 57
+2025-11-02 09:46:25,807 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:46:25,820 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 52
+2025-11-02 09:46:25,820 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:46:25,832 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 53
+2025-11-02 09:46:25,832 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 09:46:25,844 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 54
+2025-11-02 10:01:48,889 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 58
+2025-11-02 10:01:48,889 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 58
+2025-11-02 10:01:48,889 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 10:01:48,902 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 55
+2025-11-02 10:01:48,902 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 10:01:48,915 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 60
+2025-11-02 10:01:48,915 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 10:01:48,927 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 61
+2025-11-02 10:04:00,338 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 59
+2025-11-02 10:04:00,338 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 59
+2025-11-02 10:04:00,339 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 10:04:00,352 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 61
+2025-11-02 10:04:00,352 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 10:04:00,366 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 56
+2025-11-02 10:04:00,366 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 10:04:00,391 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 57
+2025-11-02 10:09:23,357 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 60
+2025-11-02 10:09:23,357 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 60
+2025-11-02 10:09:23,358 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 10:09:23,370 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 62
+2025-11-02 10:09:23,370 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 10:09:23,383 - utils.kafka_manager - INFO - Message sent to details-output - partition: 1, offset: 63
+2025-11-02 10:09:23,383 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 10:09:23,395 - utils.kafka_manager - INFO - Message sent to details-output - partition: 2, offset: 62
+2025-11-02 10:10:29,486 - utils.kafka_manager - INFO - Processing message from details-input - partition: 1, offset: 61
+2025-11-02 10:10:29,486 - utils.kafka_manager - INFO - Message sent to details-input - partition: 1, offset: 61
+2025-11-02 10:10:29,486 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 10:10:29,498 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 58
+2025-11-02 10:10:29,499 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 10:10:29,511 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 59
+2025-11-02 10:10:29,511 - processors.base_processor - INFO - Processing message with action: None
+2025-11-02 10:10:29,523 - utils.kafka_manager - INFO - Message sent to details-output - partition: 0, offset: 60
+2025-11-02 10:16:10,243 - config - INFO - Shutting down Kafka Processors API
+2025-11-02 10:16:10,246 - kafka.producer.kafka - INFO - Closing the Kafka producer with 9223372036.0 secs timeout.
+2025-11-02 10:16:10,256 - kafka.conn - INFO - <BrokerConnection node_id=0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2025-11-02 14:29:28,614 - kafka.conn - INFO - <BrokerConnection node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-11-02 14:29:28,615 - kafka.conn - INFO - Probing node bootstrap-0 broker version
+2025-11-02 14:29:28,615 - kafka.conn - INFO - <BrokerConnection node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-11-02 14:29:28,717 - kafka.conn - INFO - Broker version identified as 2.5.0
+2025-11-02 14:29:28,717 - kafka.conn - INFO - Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+2025-11-02 14:29:28,729 - config - INFO - Starting Kafka Processors API
+2025-11-02 14:29:28,729 - config - ERROR - Error during startup: 'input'
+2025-11-02 14:29:38,707 - config - ERROR - Health check failed: 'input'
+2025-11-02 14:32:44,971 - config - ERROR - Health check failed: 'input'
+2025-11-02 14:33:12,124 - config - INFO - Shutting down Kafka Processors API
+2025-11-02 14:33:12,124 - kafka.producer.kafka - INFO - Closing the Kafka producer with 9223372036.0 secs timeout.
+2025-11-02 14:33:12,124 - kafka.conn - INFO - <BrokerConnection node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2025-11-02 14:33:20,341 - kafka.conn - INFO - <BrokerConnection node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-11-02 14:33:20,341 - kafka.conn - INFO - Probing node bootstrap-0 broker version
+2025-11-02 14:33:20,341 - kafka.conn - INFO - <BrokerConnection node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-11-02 14:33:20,445 - kafka.conn - INFO - Broker version identified as 2.5.0
+2025-11-02 14:33:20,445 - kafka.conn - INFO - Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+2025-11-02 14:33:20,457 - config - INFO - Starting Kafka Processors API
+2025-11-02 14:33:20,458 - config - ERROR - Error during startup: 'input'
+2025-11-02 14:33:32,096 - config - ERROR - Health check failed: 'input'
+2025-11-02 14:34:12,910 - config - INFO - Shutting down Kafka Processors API
+2025-11-02 14:34:12,911 - kafka.producer.kafka - INFO - Closing the Kafka producer with 9223372036.0 secs timeout.
+2025-11-02 14:34:12,911 - kafka.conn - INFO - <BrokerConnection node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2025-11-02 14:34:21,334 - kafka.conn - INFO - <BrokerConnection node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-11-02 14:34:21,335 - kafka.conn - INFO - Probing node bootstrap-0 broker version
+2025-11-02 14:34:21,335 - kafka.conn - INFO - <BrokerConnection node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-11-02 14:34:21,437 - kafka.conn - INFO - Broker version identified as 2.5.0
+2025-11-02 14:34:21,438 - kafka.conn - INFO - Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+2025-11-02 14:34:21,452 - config - INFO - Starting Kafka Processors API
+2025-11-02 14:34:21,463 - kafka.conn - INFO - <BrokerConnection node_id=0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-11-02 14:34:21,464 - kafka.conn - INFO - <BrokerConnection node_id=0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-11-02 14:34:21,464 - kafka.conn - INFO - <BrokerConnection node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2025-11-02 14:34:21,478 - utils.kafka_manager - INFO - Message sent to server-demise-pipeline - partition: 1, offset: 6
+2025-11-02 14:34:21,478 - config - INFO - Kafka connection test successful
+2025-11-02 14:34:32,654 - utils.kafka_manager - INFO - Message sent to server-demise-pipeline - partition: 1, offset: 7
+2025-11-02 14:34:47,634 - utils.kafka_manager - INFO - Message sent to server-demise-pipeline - partition: 1, offset: 8
+2025-11-02 14:35:05,663 - utils.kafka_manager - INFO - Message sent to server-demise-pipeline - partition: 1, offset: 9
+2025-11-02 14:35:17,976 - utils.kafka_manager - INFO - Message sent to server-demise-pipeline - partition: 1, offset: 10
+2025-11-02 14:35:39,626 - utils.kafka_manager - INFO - Message sent to server-demise-pipeline - partition: 1, offset: 11
+2025-11-02 14:36:35,644 - utils.kafka_manager - INFO - Message sent to server-demise-pipeline - partition: 1, offset: 12
+2025-11-02 14:36:38,531 - utils.kafka_manager - INFO - Message sent to server-demise-pipeline - partition: 1, offset: 13
+2025-11-02 14:47:23,562 - utils.kafka_manager - INFO - Message sent to server-demise-pipeline - partition: 1, offset: 14
+2025-11-02 14:49:06,526 - utils.kafka_manager - INFO - Message sent to server-demise-pipeline - partition: 1, offset: 15
+2025-11-02 14:56:36,369 - utils.kafka_manager - INFO - Message sent to server-demise-pipeline - partition: 1, offset: 16

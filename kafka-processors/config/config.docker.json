@@ -1,0 +1,42 @@
+{
+    "kafka": {
+        "bootstrap_servers": ["localhost:9092"],
+        "client_id": "kafka-processors",
+        "group_id": "details-processor-group",
+        "auto_offset_reset": "earliest",
+        "enable_auto_commit": true,
+        "auto_commit_interval_ms": 1000,
+        "session_timeout_ms": 30000,
+        "max_poll_records": 100,
+        "max_poll_interval_ms": 300000,
+        "consumer_timeout_ms": 5000
+    },
+    "topics": {
+        "input": "details-input",
+        "output": "details-output"
+    },
+    "processors": {
+        "show_details": {
+            "enabled": true,
+            "threads": 2
+        },
+        "update_details": {
+            "enabled": true,
+            "threads": 2
+        },
+        "create_details": {
+            "enabled": true,
+            "threads": 2
+        }
+    },
+    "api": {
+        "host": "0.0.0.0",
+        "port": 8082,
+        "debug": true
+    },
+    "logging": {
+        "level": "INFO",
+        "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+        "file": "logs/kafka-processors.log"
+    }
+}

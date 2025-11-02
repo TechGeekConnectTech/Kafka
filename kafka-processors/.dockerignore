@@ -1,0 +1,71 @@
+# Docker ignore file for Kafka Processors
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Logs
+logs/*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.venv
+env/
+venv/
+
+# Kafka data (if any)
+/tmp/
+
+# Test outputs
+test-output/
+
+# Documentation files (not needed in container)
+*.md
+*.html
+*.pdf
+
+# Status files
+processor_status.json
+docs_server.log
+nohup.out
+
+# Management scripts (not needed in container)
+docs_*.sh
+manage_*.sh
+start_all_services.sh
+show_*.sh
+docs_watchdog.sh
+docs_server_manager.sh
+
+# Local server files
+simple_*.py
+persistent_*.py
+serve_*.py
+create_*.py
