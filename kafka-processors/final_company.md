@@ -1,6 +1,4 @@
-Essential Files for Company Environment (Kafka Topic Provided)
-1. Core Application Files (Must Copy)
-2. 📁 kafka-processors/
+📁 kafka-processors/
 ├── 📄 processor_manager_company.py     # Modified main application (see below)
 ├── 📁 api/
 │   └── 📄 main.py                      # FastAPI REST API server
@@ -19,8 +17,8 @@ Essential Files for Company Environment (Kafka Topic Provided)
 └── 📁 config/
     └── 📄 company_config.json          # Company-specific config (see below)
 
-   2. Modified Configuration for Company Environment
-Create config/company_config.json:
+    
+2. Modified Configuration for Company Environment
 {
     "kafka": {
         "bootstrap_servers": ["your-company-kafka-broker:9092"],
